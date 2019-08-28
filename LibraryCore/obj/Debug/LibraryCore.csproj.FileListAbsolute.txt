@@ -1,0 +1,5 @@
+D:\learn\Tulam\Library\LibraryCore\bin\Debug\LibraryCore.dll
+D:\learn\Tulam\Library\LibraryCore\bin\Debug\LibraryCore.pdb
+D:\learn\Tulam\Library\LibraryCore\obj\Debug\LibraryCore.dll
+D:\learn\Tulam\Library\LibraryCore\obj\Debug\LibraryCore.pdb
+D:\learn\Tulam\Library\LibraryCore\obj\Debug\LibraryCore.csprojResolveAssemblyReference.cache

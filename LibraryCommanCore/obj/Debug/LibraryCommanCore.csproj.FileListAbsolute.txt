@@ -1,0 +1,15 @@
+E:\baitapmvc5.0\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.csprojResolveAssemblyReference.cache
+E:\baitapmvc5.0\Library\LibraryCommanCore\bin\Debug\LibraryCommanCore.dll
+E:\baitapmvc5.0\Library\LibraryCommanCore\bin\Debug\LibraryCommanCore.pdb
+E:\baitapmvc5.0\Library\LibraryCommanCore\bin\Debug\LibraryConst.dll
+E:\baitapmvc5.0\Library\LibraryCommanCore\bin\Debug\LibraryDatabase.dll
+E:\baitapmvc5.0\Library\LibraryCommanCore\bin\Debug\LibraryConst.pdb
+E:\baitapmvc5.0\Library\LibraryCommanCore\bin\Debug\LibraryDatabase.pdb
+E:\baitapmvc5.0\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.dll
+E:\baitapmvc5.0\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.pdb
+D:\learn\Tulam\Library\LibraryCommanCore\bin\Debug\LibraryCommanCore.dll
+D:\learn\Tulam\Library\LibraryCommanCore\bin\Debug\LibraryCommanCore.pdb
+D:\learn\Tulam\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.csprojResolveAssemblyReference.cache
+D:\learn\Tulam\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.dll
+D:\learn\Tulam\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.pdb
+D:\learn\Tulam\Library\LibraryCommanCore\bin\Debug\System.Linq.Dynamic.dll

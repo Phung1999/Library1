@@ -1,0 +1,11 @@
+﻿nội dụng có gì đâu mà có gì là bán
+nội dụng có gì đâu mà có gì là bán
+nội dụng có gì đâu mà có gì là bán
+8/20/2019 3:10:54 PMSystem.DivideByZeroException: Attempted to divide by zero.
+   at Library.Controllers.HomeController.Index() in D:\learn\Tulam\Library\Library\Controllers\HomeController.cs:line 46
+8/20/2019 3:11:00 PMSystem.DivideByZeroException: Attempted to divide by zero.
+   at Library.Controllers.HomeController.Index() in D:\learn\Tulam\Library\Library\Controllers\HomeController.cs:line 46
+8/20/2019 3:11:26 PMSystem.DivideByZeroException: Attempted to divide by zero.
+   at Library.Controllers.HomeController.Index() in D:\learn\Tulam\Library\Library\Controllers\HomeController.cs:line 46
+8/20/2019 3:11:27 PMSystem.DivideByZeroException: Attempted to divide by zero.
+   at Library.Controllers.HomeController.Index() in D:\learn\Tulam\Library\Library\Controllers\HomeController.cs:line 46

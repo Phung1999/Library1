@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+@foreach (var menulevel1 in ViewBag.MenuLevel1)
+{
+    if (menulevel1.ParentId==0)
+    {       
+        <a class="nav-link dropdown-toggle" href="#" id="@menulevel1.MenuName" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>@menulevel1.MenuName</span>
+        </a>
+        @*@string Menu1= @menulevel1.MenuName;*@
+    }
+    else if(menulevel1.ParentId!=0)
+    {
+        <li class="nav-item dropdown">
+            @*<a class="nav-link dropdown-toggle" href="#" id="@menulevel1.MenuName" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fas fa-fw fa-folder"></i>
+                <span>@menulevel1.MenuName</span>
+            </a>*@
+            @foreach (var menulevel2 in ViewBag.MenuLevel1)
+            {
+                if (menulevel2.ParentId == menulevel1.ParentId)
+                {
+                    <div class="dropdown-menu" aria-labelledby="@menulevel2.MenuName">
+                        @*<h6 class="dropdown-header">@menulevel1.MenuName:</h6>*@
+                        <a class="dropdown-item" href="login.html">@menulevel2.MenuName</a>
+                        @*<a class="dropdown-item" href="register.html">Register</a>
+                        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>*@
+                
+                    </div>
+                }
+            }
+           
+        </li>
+    }
+    
+}
+
+

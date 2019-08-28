@@ -1,0 +1,60 @@
+﻿8/26/2019 8:43:24 AMSystem.InvalidOperationException: No connection string named 'LibraryDBEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LibraryDatabase.Dao.UserDao.Login(String userName, String passWord, Boolean isLoginAdmin) in D:\learn\Tulam\Library\LibraryDatabase\Dao\UserDao.cs:line 32
+   at Library.Areas.Admin.Controllers.LoginController.Login(AccountModel model) in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginController.cs:line 24
+8/26/2019 8:43:27 AMSystem.InvalidOperationException: No connection string named 'LibraryDBEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LibraryDatabase.Dao.UserDao.Login(String userName, String passWord, Boolean isLoginAdmin) in D:\learn\Tulam\Library\LibraryDatabase\Dao\UserDao.cs:line 32
+   at Library.Areas.Admin.Controllers.LoginController.Login(AccountModel model) in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginController.cs:line 24
+8/26/2019 8:43:28 AMSystem.InvalidOperationException: No connection string named 'LibraryDBEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LibraryDatabase.Dao.UserDao.Login(String userName, String passWord, Boolean isLoginAdmin) in D:\learn\Tulam\Library\LibraryDatabase\Dao\UserDao.cs:line 32
+   at Library.Areas.Admin.Controllers.LoginController.Login(AccountModel model) in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginController.cs:line 24
+8/26/2019 8:43:29 AMSystem.InvalidOperationException: No connection string named 'LibraryDBEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LibraryDatabase.Dao.UserDao.Login(String userName, String passWord, Boolean isLoginAdmin) in D:\learn\Tulam\Library\LibraryDatabase\Dao\UserDao.cs:line 32
+   at Library.Areas.Admin.Controllers.LoginController.Login(AccountModel model) in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginController.cs:line 24
+8/26/2019 8:43:29 AMSystem.InvalidOperationException: No connection string named 'LibraryDBEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LibraryDatabase.Dao.UserDao.Login(String userName, String passWord, Boolean isLoginAdmin) in D:\learn\Tulam\Library\LibraryDatabase\Dao\UserDao.cs:line 32
+   at Library.Areas.Admin.Controllers.LoginController.Login(AccountModel model) in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginController.cs:line 24
+8/26/2019 8:43:29 AMSystem.InvalidOperationException: No connection string named 'LibraryDBEntities' could be found in the application config file.
+   at System.Data.Entity.Internal.LazyInternalConnection.get_ConnectionHasModel()
+   at System.Data.Entity.Internal.LazyInternalContext.InitializeContext()
+   at System.Data.Entity.Internal.InternalContext.GetEntitySetAndBaseTypeForType(Type entityType)
+   at System.Data.Entity.Internal.Linq.InternalSet`1.Initialize()
+   at System.Data.Entity.Internal.Linq.InternalSet`1.get_InternalContext()
+   at System.Data.Entity.Infrastructure.DbQuery`1.System.Linq.IQueryable.get_Provider()
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source, Expression`1 predicate)
+   at LibraryDatabase.Dao.UserDao.Login(String userName, String passWord, Boolean isLoginAdmin) in D:\learn\Tulam\Library\LibraryDatabase\Dao\UserDao.cs:line 32
+   at Library.Areas.Admin.Controllers.LoginController.Login(AccountModel model) in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginController.cs:line 24

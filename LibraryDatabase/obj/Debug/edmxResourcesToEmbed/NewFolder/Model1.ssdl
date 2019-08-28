@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LibraryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.Credential' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Credential">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+      <PropertyRef Name="IDRole" />
+    </Key>
+    <Property Name="UserGroupID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="IDRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.Nhanvien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Nhanvien">
+    <Key>
+      <PropertyRef Name="nhanvienid" />
+      <PropertyRef Name="idphongban" />
+      <PropertyRef Name="sdt" />
+      <PropertyRef Name="diachi" />
+      <PropertyRef Name="nhomqtid" />
+      <PropertyRef Name="datecreate" />
+      <PropertyRef Name="quoctichid" />
+      <PropertyRef Name="usename" />
+    </Key>
+    <Property Name="nhanvienid" Type="int" Nullable="false" />
+    <Property Name="idphongban" Type="int" Nullable="false" />
+    <Property Name="sdt" Type="nchar" MaxLength="13" Nullable="false" />
+    <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="nhomqtid" Type="int" Nullable="false" />
+    <Property Name="datecreate" Type="datetime" Nullable="false" />
+    <Property Name="datedelete" Type="datetime" />
+    <Property Name="quoctichid" Type="int" Nullable="false" />
+    <Property Name="usename" Type="nchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.NhomQT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="NhomQT">
+    <Key>
+      <PropertyRef Name="idnhomqt" />
+      <PropertyRef Name="tennhomqt" />
+      <PropertyRef Name="datecreate" />
+      <PropertyRef Name="datedelete" />
+      <PropertyRef Name="isdelete" />
+      <PropertyRef Name="isblocked" />
+    </Key>
+    <Property Name="idnhomqt" Type="int" Nullable="false" />
+    <Property Name="tennhomqt" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="datecreate" Type="datetime" Nullable="false" />
+    <Property Name="datedelete" Type="datetime" Nullable="false" />
+    <Property Name="isdelete" Type="bit" Nullable="false" />
+    <Property Name="isblocked" Type="bit" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.Phongban' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Phongban">
+    <Key>
+      <PropertyRef Name="phongbanID" />
+      <PropertyRef Name="namephongban" />
+      <PropertyRef Name="idparent" />
+      <PropertyRef Name="diachipb" />
+      <PropertyRef Name="sdt" />
+      <PropertyRef Name="datecreate" />
+      <PropertyRef Name="datedelete" />
+      <PropertyRef Name="idnhanvien" />
+      <PropertyRef Name="nhomqtid" />
+    </Key>
+    <Property Name="phongbanID" Type="int" Nullable="false" />
+    <Property Name="namephongban" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="idparent" Type="int" Nullable="false" />
+    <Property Name="diachipb" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="sdt" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="datecreate" Type="datetime" Nullable="false" />
+    <Property Name="datedelete" Type="datetime" Nullable="false" />
+    <Property Name="idnhanvien" Type="int" Nullable="false" />
+    <Property Name="nhomqtid" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.Quoctich' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Quoctich">
+    <Key>
+      <PropertyRef Name="idquoctich" />
+      <PropertyRef Name="namequoctich" />
+      <PropertyRef Name="datecreate" />
+    </Key>
+    <Property Name="idquoctich" Type="int" Nullable="false" />
+    <Property Name="namequoctich" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="datecreate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.QuyenUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="QuyenUser">
+    <Key>
+      <PropertyRef Name="quyenid" />
+      <PropertyRef Name="tenquyen" />
+    </Key>
+    <Property Name="quyenid" Type="int" Nullable="false" />
+    <Property Name="tenquyen" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="UserGroupID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="UserGroupID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.UserRole' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="RoleID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="RoleID" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastEdit" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="IsBlocked" Type="bit" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'LibraryDB.dbo.Users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserName" />
+      <PropertyRef Name="PassWord" />
+    </Key>
+    <Property Name="UserID" Type="int" />
+    <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="PassWord" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" />
+    <Property Name="LastEdit" Type="datetime" />
+    <Property Name="IsDelete" Type="bit" />
+    <Property Name="IsBlocked" Type="bit" />
+    <Property Name="IDUserGroup" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="LibraryDBModelStoreContainer">
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Credential" EntityType="Self.Credential" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Credential].[UserGroupID] AS [UserGroupID], 
+    [Credential].[IDRole] AS [IDRole]
+    FROM [dbo].[Credential] AS [Credential]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Nhanvien" EntityType="Self.Nhanvien" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Nhanvien].[nhanvienid] AS [nhanvienid], 
+    [Nhanvien].[idphongban] AS [idphongban], 
+    [Nhanvien].[sdt] AS [sdt], 
+    [Nhanvien].[diachi] AS [diachi], 
+    [Nhanvien].[nhomqtid] AS [nhomqtid], 
+    [Nhanvien].[datecreate] AS [datecreate], 
+    [Nhanvien].[datedelete] AS [datedelete], 
+    [Nhanvien].[quoctichid] AS [quoctichid], 
+    [Nhanvien].[usename] AS [usename]
+    FROM [dbo].[Nhanvien] AS [Nhanvien]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="NhomQT" EntityType="Self.NhomQT" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [NhomQT].[idnhomqt] AS [idnhomqt], 
+    [NhomQT].[tennhomqt] AS [tennhomqt], 
+    [NhomQT].[datecreate] AS [datecreate], 
+    [NhomQT].[datedelete] AS [datedelete], 
+    [NhomQT].[isdelete] AS [isdelete], 
+    [NhomQT].[isblocked] AS [isblocked]
+    FROM [dbo].[NhomQT] AS [NhomQT]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Phongban" EntityType="Self.Phongban" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Phongban].[phongbanID] AS [phongbanID], 
+    [Phongban].[namephongban] AS [namephongban], 
+    [Phongban].[idparent] AS [idparent], 
+    [Phongban].[diachipb] AS [diachipb], 
+    [Phongban].[sdt] AS [sdt], 
+    [Phongban].[datecreate] AS [datecreate], 
+    [Phongban].[datedelete] AS [datedelete], 
+    [Phongban].[idnhanvien] AS [idnhanvien], 
+    [Phongban].[nhomqtid] AS [nhomqtid]
+    FROM [dbo].[Phongban] AS [Phongban]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Quoctich" EntityType="Self.Quoctich" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Quoctich].[idquoctich] AS [idquoctich], 
+    [Quoctich].[namequoctich] AS [namequoctich], 
+    [Quoctich].[datecreate] AS [datecreate]
+    FROM [dbo].[Quoctich] AS [Quoctich]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="QuyenUser" EntityType="Self.QuyenUser" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [QuyenUser].[quyenid] AS [quyenid], 
+    [QuyenUser].[tenquyen] AS [tenquyen]
+    FROM [dbo].[QuyenUser] AS [QuyenUser]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserGroup" EntityType="Self.UserGroup" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserGroup].[UserGroupID] AS [UserGroupID], 
+    [UserGroup].[Name] AS [Name]
+    FROM [dbo].[UserGroup] AS [UserGroup]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UserRole" EntityType="Self.UserRole" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UserRole].[RoleID] AS [RoleID], 
+    [UserRole].[Name] AS [Name], 
+    [UserRole].[CreateDate] AS [CreateDate], 
+    [UserRole].[LastEdit] AS [LastEdit], 
+    [UserRole].[IsDelete] AS [IsDelete], 
+    [UserRole].[IsBlocked] AS [IsBlocked]
+    FROM [dbo].[UserRole] AS [UserRole]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Users" EntityType="Self.Users" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Users].[UserID] AS [UserID], 
+    [Users].[UserName] AS [UserName], 
+    [Users].[PassWord] AS [PassWord], 
+    [Users].[CreateDate] AS [CreateDate], 
+    [Users].[LastEdit] AS [LastEdit], 
+    [Users].[IsDelete] AS [IsDelete], 
+    [Users].[IsBlocked] AS [IsBlocked], 
+    [Users].[IDUserGroup] AS [IDUserGroup]
+    FROM [dbo].[Users] AS [Users]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
