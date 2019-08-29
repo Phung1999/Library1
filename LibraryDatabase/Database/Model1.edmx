@@ -5,12 +5,33 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="LibraryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+        </EntityType>
         <EntityType Name="Credential">
           <Key>
             <PropertyRef Name="UserGroupID" />
           </Key>
           <Property Name="UserGroupID" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="IDRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deparment">
+          <Key>
+            <PropertyRef Name="DeparmentID" />
+          </Key>
+          <Property Name="DeparmentID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="13" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IDGroup" Type="int" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -22,6 +43,19 @@
           <Property Name="Office" Type="varchar" MaxLength="50" />
           <Property Name="Age" Type="int" />
           <Property Name="Salary" Type="int" />
+          <Property Name="IDCountry" Type="int" />
+          <Property Name="IDDeparment" Type="int" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
         </EntityType>
         <EntityType Name="MainMenu">
           <Key>
@@ -41,76 +75,6 @@
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LibraryDB.dbo.Nhanvien' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Nhanvien">
-          <Key>
-            <PropertyRef Name="nhanvienid" />
-            <PropertyRef Name="idphongban" />
-            <PropertyRef Name="sdt" />
-            <PropertyRef Name="diachi" />
-            <PropertyRef Name="nhomqtid" />
-            <PropertyRef Name="datecreate" />
-            <PropertyRef Name="quoctichid" />
-            <PropertyRef Name="usename" />
-          </Key>
-          <Property Name="nhanvienid" Type="int" Nullable="false" />
-          <Property Name="idphongban" Type="int" Nullable="false" />
-          <Property Name="sdt" Type="nchar" MaxLength="13" Nullable="false" />
-          <Property Name="diachi" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="nhomqtid" Type="int" Nullable="false" />
-          <Property Name="datecreate" Type="datetime" Nullable="false" />
-          <Property Name="datedelete" Type="datetime" />
-          <Property Name="quoctichid" Type="int" Nullable="false" />
-          <Property Name="usename" Type="nchar" MaxLength="50" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LibraryDB.dbo.NhomQT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="NhomQT">
-          <Key>
-            <PropertyRef Name="idnhomqt" />
-          </Key>
-          <Property Name="idnhomqt" Type="int" Nullable="false" />
-          <Property Name="tennhomqt" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="datecreate" Type="datetime" Nullable="false" />
-          <Property Name="datedelete" Type="datetime" Nullable="false" />
-          <Property Name="isdelete" Type="bit" Nullable="false" />
-          <Property Name="isblocked" Type="bit" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LibraryDB.dbo.Phongban' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Phongban">
-          <Key>
-            <PropertyRef Name="phongbanID" />
-            <PropertyRef Name="namephongban" />
-            <PropertyRef Name="idparent" />
-            <PropertyRef Name="diachipb" />
-            <PropertyRef Name="sdt" />
-            <PropertyRef Name="datecreate" />
-            <PropertyRef Name="datedelete" />
-            <PropertyRef Name="idnhanvien" />
-            <PropertyRef Name="nhomqtid" />
-          </Key>
-          <Property Name="phongbanID" Type="int" Nullable="false" />
-          <Property Name="namephongban" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="idparent" Type="int" Nullable="false" />
-          <Property Name="diachipb" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="sdt" Type="varchar" MaxLength="13" Nullable="false" />
-          <Property Name="datecreate" Type="datetime" Nullable="false" />
-          <Property Name="datedelete" Type="datetime" Nullable="false" />
-          <Property Name="idnhanvien" Type="int" Nullable="false" />
-          <Property Name="nhomqtid" Type="int" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'LibraryDB.dbo.Quoctich' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Quoctich">
-          <Key>
-            <PropertyRef Name="idquoctich" />
-            <PropertyRef Name="namequoctich" />
-            <PropertyRef Name="datecreate" />
-          </Key>
-          <Property Name="idquoctich" Type="int" Nullable="false" />
-          <Property Name="namequoctich" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="datecreate" Type="datetime" Nullable="false" />
-        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'LibraryDB.dbo.QuyenUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="QuyenUser">
@@ -120,6 +84,18 @@ warning 6002: The table/view 'LibraryDB.dbo.QuyenUser' does not have a primary k
           </Key>
           <Property Name="quyenid" Type="int" Nullable="false" />
           <Property Name="tenquyen" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaftID" />
+          </Key>
+          <Property Name="StaftID" Type="int" Nullable="false" />
+          <Property Name="IDDeparmet" Type="int" />
+          <Property Name="Phone" Type="nchar" MaxLength="13" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IDCountry" Type="int" />
         </EntityType>
         <EntityType Name="SubMenu">
           <Key>
@@ -176,57 +152,18 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
           <Property Name="IDMainMenu" Type="nchar" MaxLength="20" />
         </EntityType>
         <EntityContainer Name="LibraryDBModelStoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Credential" EntityType="Self.Credential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deparment" EntityType="Self.Deparment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Group" EntityType="Self.Group" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MainMenu" EntityType="Self.MainMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SubMenu" EntityType="Self.SubMenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Nhanvien" EntityType="Self.Nhanvien" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Nhanvien].[nhanvienid] AS [nhanvienid], 
-    [Nhanvien].[idphongban] AS [idphongban], 
-    [Nhanvien].[sdt] AS [sdt], 
-    [Nhanvien].[diachi] AS [diachi], 
-    [Nhanvien].[nhomqtid] AS [nhomqtid], 
-    [Nhanvien].[datecreate] AS [datecreate], 
-    [Nhanvien].[datedelete] AS [datedelete], 
-    [Nhanvien].[quoctichid] AS [quoctichid], 
-    [Nhanvien].[usename] AS [usename]
-    FROM [dbo].[Nhanvien] AS [Nhanvien]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="NhomQT" EntityType="Self.NhomQT" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [NhomQT].[idnhomqt] AS [idnhomqt], 
-    [NhomQT].[tennhomqt] AS [tennhomqt], 
-    [NhomQT].[datecreate] AS [datecreate], 
-    [NhomQT].[datedelete] AS [datedelete], 
-    [NhomQT].[isdelete] AS [isdelete], 
-    [NhomQT].[isblocked] AS [isblocked]
-    FROM [dbo].[NhomQT] AS [NhomQT]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Phongban" EntityType="Self.Phongban" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Phongban].[phongbanID] AS [phongbanID], 
-    [Phongban].[namephongban] AS [namephongban], 
-    [Phongban].[idparent] AS [idparent], 
-    [Phongban].[diachipb] AS [diachipb], 
-    [Phongban].[sdt] AS [sdt], 
-    [Phongban].[datecreate] AS [datecreate], 
-    [Phongban].[datedelete] AS [datedelete], 
-    [Phongban].[idnhanvien] AS [idnhanvien], 
-    [Phongban].[nhomqtid] AS [nhomqtid]
-    FROM [dbo].[Phongban] AS [Phongban]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Quoctich" EntityType="Self.Quoctich" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Quoctich].[idquoctich] AS [idquoctich], 
-    [Quoctich].[namequoctich] AS [namequoctich], 
-    [Quoctich].[datecreate] AS [datecreate]
-    FROM [dbo].[Quoctich] AS [Quoctich]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="QuyenUser" EntityType="Self.QuyenUser" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [QuyenUser].[quyenid] AS [quyenid], 
@@ -244,17 +181,6 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="LibraryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Employee">
-          <Key>
-            <PropertyRef Name="EmployeeID" />
-          </Key>
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Age" Type="Int32" />
-          <Property Name="Salary" Type="Int32" />
-        </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
             <PropertyRef Name="diagram_id" />
@@ -271,70 +197,6 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
           </Key>
           <Property Name="UserGroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IDRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Nhanvien">
-          <Key>
-            <PropertyRef Name="nhanvienid" />
-            <PropertyRef Name="idphongban" />
-            <PropertyRef Name="sdt" />
-            <PropertyRef Name="diachi" />
-            <PropertyRef Name="nhomqtid" />
-            <PropertyRef Name="datecreate" />
-            <PropertyRef Name="quoctichid" />
-            <PropertyRef Name="usename" />
-          </Key>
-          <Property Name="nhanvienid" Type="Int32" Nullable="false" />
-          <Property Name="idphongban" Type="Int32" Nullable="false" />
-          <Property Name="sdt" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="nhomqtid" Type="Int32" Nullable="false" />
-          <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="datedelete" Type="DateTime" Precision="3" />
-          <Property Name="quoctichid" Type="Int32" Nullable="false" />
-          <Property Name="usename" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="NhomQT">
-          <Key>
-            <PropertyRef Name="idnhomqt" />
-          </Key>
-          <Property Name="idnhomqt" Type="Int32" Nullable="false" />
-          <Property Name="tennhomqt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="datedelete" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="isdelete" Type="Boolean" Nullable="false" />
-          <Property Name="isblocked" Type="Boolean" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Phongban">
-          <Key>
-            <PropertyRef Name="phongbanID" />
-            <PropertyRef Name="namephongban" />
-            <PropertyRef Name="idparent" />
-            <PropertyRef Name="diachipb" />
-            <PropertyRef Name="sdt" />
-            <PropertyRef Name="datecreate" />
-            <PropertyRef Name="datedelete" />
-            <PropertyRef Name="idnhanvien" />
-            <PropertyRef Name="nhomqtid" />
-          </Key>
-          <Property Name="phongbanID" Type="Int32" Nullable="false" />
-          <Property Name="namephongban" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="idparent" Type="Int32" Nullable="false" />
-          <Property Name="diachipb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="sdt" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="datedelete" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="idnhanvien" Type="Int32" Nullable="false" />
-          <Property Name="nhomqtid" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Quoctich">
-          <Key>
-            <PropertyRef Name="idquoctich" />
-            <PropertyRef Name="namequoctich" />
-            <PropertyRef Name="datecreate" />
-          </Key>
-          <Property Name="idquoctich" Type="Int32" Nullable="false" />
-          <Property Name="namequoctich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="QuyenUser">
           <Key>
@@ -378,13 +240,8 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
           <Property Name="IDMainMenu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityContainer Name="LibraryDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="Credentials" EntityType="Self.Credential" />
-          <EntitySet Name="Nhanviens" EntityType="Self.Nhanvien" />
-          <EntitySet Name="NhomQTs" EntityType="Self.NhomQT" />
-          <EntitySet Name="Phongbans" EntityType="Self.Phongban" />
-          <EntitySet Name="Quoctiches" EntityType="Self.Quoctich" />
           <EntitySet Name="QuyenUsers" EntityType="Self.QuyenUser" />
           <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
@@ -392,6 +249,11 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
           <EntitySet Name="MainMenus" EntityType="LibraryDBModel.MainMenu" />
           <EntitySet Name="Menus" EntityType="LibraryDBModel.Menu" />
           <EntitySet Name="SubMenus" EntityType="LibraryDBModel.SubMenu" />
+          <EntitySet Name="Countries" EntityType="LibraryDBModel.Country" />
+          <EntitySet Name="Deparments" EntityType="LibraryDBModel.Deparment" />
+          <EntitySet Name="Employees" EntityType="LibraryDBModel.Employee" />
+          <EntitySet Name="Groups" EntityType="LibraryDBModel.Group" />
+          <EntitySet Name="Staffs" EntityType="LibraryDBModel.Staff" />
         </EntityContainer>
         <EntityType Name="MainMenu">
           <Key>
@@ -418,24 +280,69 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
           <Property Name="SubURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="IDMainMenu" Type="Int32" />
         </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Deparment">
+          <Key>
+            <PropertyRef Name="DeparmentID" />
+          </Key>
+          <Property Name="DeparmentID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IDGroup" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="IDCountry" Type="Int32" />
+          <Property Name="IDDeparment" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Group">
+          <Key>
+            <PropertyRef Name="GroupID" />
+          </Key>
+          <Property Name="GroupID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaftID" />
+          </Key>
+          <Property Name="StaftID" Type="Int32" Nullable="false" />
+          <Property Name="IDDeparmet" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IDCountry" Type="Int32" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="LibraryDBModelStoreContainer" CdmEntityContainer="LibraryDBEntities">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="LibraryDBModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Position" ColumnName="Position" />
-                <ScalarProperty Name="Office" ColumnName="Office" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="Salary" ColumnName="Salary" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="LibraryDBModel.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -452,57 +359,6 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
               <MappingFragment StoreEntitySet="Credential">
                 <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
                 <ScalarProperty Name="IDRole" ColumnName="IDRole" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Nhanviens">
-            <EntityTypeMapping TypeName="LibraryDBModel.Nhanvien">
-              <MappingFragment StoreEntitySet="Nhanvien">
-                <ScalarProperty Name="nhanvienid" ColumnName="nhanvienid" />
-                <ScalarProperty Name="idphongban" ColumnName="idphongban" />
-                <ScalarProperty Name="sdt" ColumnName="sdt" />
-                <ScalarProperty Name="diachi" ColumnName="diachi" />
-                <ScalarProperty Name="nhomqtid" ColumnName="nhomqtid" />
-                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
-                <ScalarProperty Name="datedelete" ColumnName="datedelete" />
-                <ScalarProperty Name="quoctichid" ColumnName="quoctichid" />
-                <ScalarProperty Name="usename" ColumnName="usename" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NhomQTs">
-            <EntityTypeMapping TypeName="LibraryDBModel.NhomQT">
-              <MappingFragment StoreEntitySet="NhomQT">
-                <ScalarProperty Name="idnhomqt" ColumnName="idnhomqt" />
-                <ScalarProperty Name="tennhomqt" ColumnName="tennhomqt" />
-                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
-                <ScalarProperty Name="datedelete" ColumnName="datedelete" />
-                <ScalarProperty Name="isdelete" ColumnName="isdelete" />
-                <ScalarProperty Name="isblocked" ColumnName="isblocked" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Phongbans">
-            <EntityTypeMapping TypeName="LibraryDBModel.Phongban">
-              <MappingFragment StoreEntitySet="Phongban">
-                <ScalarProperty Name="phongbanID" ColumnName="phongbanID" />
-                <ScalarProperty Name="namephongban" ColumnName="namephongban" />
-                <ScalarProperty Name="idparent" ColumnName="idparent" />
-                <ScalarProperty Name="diachipb" ColumnName="diachipb" />
-                <ScalarProperty Name="sdt" ColumnName="sdt" />
-                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
-                <ScalarProperty Name="datedelete" ColumnName="datedelete" />
-                <ScalarProperty Name="idnhanvien" ColumnName="idnhanvien" />
-                <ScalarProperty Name="nhomqtid" ColumnName="nhomqtid" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Quoctiches">
-            <EntityTypeMapping TypeName="LibraryDBModel.Quoctich">
-              <MappingFragment StoreEntitySet="Quoctich">
-                <ScalarProperty Name="idquoctich" ColumnName="idquoctich" />
-                <ScalarProperty Name="namequoctich" ColumnName="namequoctich" />
-                <ScalarProperty Name="datecreate" ColumnName="datecreate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -574,6 +430,68 @@ warning 6002: The table/view 'LibraryDB.dbo.UserGroup' does not have a primary k
                 <ScalarProperty Name="SubURL" ColumnName="SubURL" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="LibraryDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deparments">
+            <EntityTypeMapping TypeName="LibraryDBModel.Deparment">
+              <MappingFragment StoreEntitySet="Deparment">
+                <ScalarProperty Name="IDGroup" ColumnName="IDGroup" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeparmentID" ColumnName="DeparmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="LibraryDBModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IDDeparment" ColumnName="IDDeparment" />
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Groups">
+            <EntityTypeMapping TypeName="LibraryDBModel.Group">
+              <MappingFragment StoreEntitySet="Group">
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="LibraryDBModel.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IDDeparmet" ColumnName="IDDeparmet" />
+                <ScalarProperty Name="StaftID" ColumnName="StaftID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

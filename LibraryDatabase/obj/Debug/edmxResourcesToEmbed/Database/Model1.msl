@@ -1,18 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="LibraryDBModelStoreContainer" CdmEntityContainer="LibraryDBEntities">
-    <EntitySetMapping Name="Employees">
-      <EntityTypeMapping TypeName="LibraryDBModel.Employee">
-        <MappingFragment StoreEntitySet="Employee">
-          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Position" ColumnName="Position" />
-          <ScalarProperty Name="Office" ColumnName="Office" />
-          <ScalarProperty Name="Age" ColumnName="Age" />
-          <ScalarProperty Name="Salary" ColumnName="Salary" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="sysdiagrams">
       <EntityTypeMapping TypeName="LibraryDBModel.sysdiagram">
         <MappingFragment StoreEntitySet="sysdiagrams">
@@ -29,57 +17,6 @@
         <MappingFragment StoreEntitySet="Credential">
           <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
           <ScalarProperty Name="IDRole" ColumnName="IDRole" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Nhanviens">
-      <EntityTypeMapping TypeName="LibraryDBModel.Nhanvien">
-        <MappingFragment StoreEntitySet="Nhanvien">
-          <ScalarProperty Name="nhanvienid" ColumnName="nhanvienid" />
-          <ScalarProperty Name="idphongban" ColumnName="idphongban" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="diachi" ColumnName="diachi" />
-          <ScalarProperty Name="nhomqtid" ColumnName="nhomqtid" />
-          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
-          <ScalarProperty Name="datedelete" ColumnName="datedelete" />
-          <ScalarProperty Name="quoctichid" ColumnName="quoctichid" />
-          <ScalarProperty Name="usename" ColumnName="usename" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NhomQTs">
-      <EntityTypeMapping TypeName="LibraryDBModel.NhomQT">
-        <MappingFragment StoreEntitySet="NhomQT">
-          <ScalarProperty Name="idnhomqt" ColumnName="idnhomqt" />
-          <ScalarProperty Name="tennhomqt" ColumnName="tennhomqt" />
-          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
-          <ScalarProperty Name="datedelete" ColumnName="datedelete" />
-          <ScalarProperty Name="isdelete" ColumnName="isdelete" />
-          <ScalarProperty Name="isblocked" ColumnName="isblocked" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Phongbans">
-      <EntityTypeMapping TypeName="LibraryDBModel.Phongban">
-        <MappingFragment StoreEntitySet="Phongban">
-          <ScalarProperty Name="phongbanID" ColumnName="phongbanID" />
-          <ScalarProperty Name="namephongban" ColumnName="namephongban" />
-          <ScalarProperty Name="idparent" ColumnName="idparent" />
-          <ScalarProperty Name="diachipb" ColumnName="diachipb" />
-          <ScalarProperty Name="sdt" ColumnName="sdt" />
-          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
-          <ScalarProperty Name="datedelete" ColumnName="datedelete" />
-          <ScalarProperty Name="idnhanvien" ColumnName="idnhanvien" />
-          <ScalarProperty Name="nhomqtid" ColumnName="nhomqtid" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Quoctiches">
-      <EntityTypeMapping TypeName="LibraryDBModel.Quoctich">
-        <MappingFragment StoreEntitySet="Quoctich">
-          <ScalarProperty Name="idquoctich" ColumnName="idquoctich" />
-          <ScalarProperty Name="namequoctich" ColumnName="namequoctich" />
-          <ScalarProperty Name="datecreate" ColumnName="datecreate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -151,6 +88,68 @@
           <ScalarProperty Name="SubURL" ColumnName="SubURL" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="LibraryDBModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deparments">
+      <EntityTypeMapping TypeName="LibraryDBModel.Deparment">
+        <MappingFragment StoreEntitySet="Deparment">
+          <ScalarProperty Name="IDGroup" ColumnName="IDGroup" />
+          <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="DeparmentID" ColumnName="DeparmentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="LibraryDBModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="IDDeparment" ColumnName="IDDeparment" />
+          <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+          <ScalarProperty Name="Salary" ColumnName="Salary" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="Office" ColumnName="Office" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="LibraryDBModel.Group">
+        <MappingFragment StoreEntitySet="Group">
+          <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Staffs">
+      <EntityTypeMapping TypeName="LibraryDBModel.Staff">
+        <MappingFragment StoreEntitySet="Staff">
+          <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+          <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IDDeparmet" ColumnName="IDDeparmet" />
+          <ScalarProperty Name="StaftID" ColumnName="StaftID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

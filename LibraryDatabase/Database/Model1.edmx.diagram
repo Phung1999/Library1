@@ -5,20 +5,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="bc8948e8a95545de8b94c58d03131438" Name="Diagram1">
-        <EntityTypeShape EntityType="LibraryDBModel.Employee" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LibraryDBModel.sysdiagram" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LibraryDBModel.Credential" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Nhanvien" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.NhomQT" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Phongban" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.Quoctich" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="LibraryDBModel.QuyenUser" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.UserGroup" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.UserRole" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.User" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="LibraryDBModel.MainMenu" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LibraryDBModel.UserGroup" Width="1.5" PointX="4.625" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.UserRole" Width="1.5" PointX="0.875" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.User" Width="1.5" PointX="2.875" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel.MainMenu" Width="1.5" PointX="7.25" PointY="0.75" />
         <EntityTypeShape EntityType="LibraryDBModel.Menu" Width="1.5" PointX="9.375" PointY="3.75" />
-        <EntityTypeShape EntityType="LibraryDBModel.SubMenu" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="LibraryDBModel.SubMenu" Width="1.5" PointX="4.75" PointY="3.75" />
+        <EntityTypeShape EntityType="LibraryDBModel.Country" Width="1.5" PointX="8" PointY="6.375" />
+        <EntityTypeShape EntityType="LibraryDBModel.Deparment" Width="1.5" PointX="1" PointY="8.375" />
+        <EntityTypeShape EntityType="LibraryDBModel.Employee" Width="1.5" PointX="3" PointY="8.375" />
+        <EntityTypeShape EntityType="LibraryDBModel.Group" Width="1.5" PointX="5" PointY="8.375" />
+        <EntityTypeShape EntityType="LibraryDBModel.Staff" Width="1.5" PointX="7.25" PointY="8.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

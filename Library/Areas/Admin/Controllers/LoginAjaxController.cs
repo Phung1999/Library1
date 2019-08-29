@@ -25,7 +25,7 @@ namespace Library.Areas.Admin.Controllers
             string result = "Fail";
             try
             {
-                var DataItem = db.Users.Where(x => x.UserName == model.Username && x.PassWord == model.Password)
+                var DataItem = db.Users.Where(x => x.UserName.Equals( model.Username) && x.PassWord.Equals( model.Password))
               .FirstOrDefault();
                 if (DataItem != null)
                 {
@@ -39,7 +39,6 @@ namespace Library.Areas.Admin.Controllers
             {
                 //Logger.Savefile("e);
                 e.Savefile();
-
             }
             return Json(result, JsonRequestBehavior.AllowGet);   
         }
@@ -62,7 +61,7 @@ namespace Library.Areas.Admin.Controllers
             return RedirectToAction("Index", "LoginAjax");
         }
         [HttpPost]
-        public ActionResult GetList()
+        public ActionResult GetListEmployee()
         {
             try
             {
@@ -90,9 +89,7 @@ namespace Library.Areas.Admin.Controllers
                         data = db.Employees.
                             Where(x => x.Name.Contains(searchValue) || x.Position.Contains(searchValue) || x.Office.Contains(searchValue) || x.Age.ToString().Contains(searchValue) || x.Salary.ToString().Contains(searchValue));
                         totalrowsafterfiltering = data.Count();
-                    }
-
-                   
+                    }                   
                     var employees = data.OrderBy(sortColumnName + " " + sortDirection).Skip(start).Take(length).ToList();
                     return Json(new { data = employees, draw = Request["draw"], recordsTotal = totalrows, recordsFiltered = totalrowsafterfiltering }, JsonRequestBehavior.AllowGet);
                 }
@@ -114,7 +111,7 @@ namespace Library.Areas.Admin.Controllers
                     if (cut.Count() > 1)
                     {
                         string[] cutnow = cut.Split(',');
-                        for (int i = 0; i < cut.Count() - 1; i++)
+                        for (int i = 0; i < cutnow.Count() ; i++)
                         {
                             int idmain = int.Parse(cutnow[i]);
                             var DataMenu = db.MainMenus.Where(x => x.MainMenuID == idmain).FirstOrDefault();
@@ -165,5 +162,79 @@ namespace Library.Areas.Admin.Controllers
                 List = GetMenuTree(list, x.Id)
             }).ToList();
         }
+        public JsonResult GetListCountry(string searchitemm)
+        {
+            try
+            {
+                if (Session["UserID"].ToString().Trim()!=null)
+                {
+                    IQueryable<Country> country;
+                    if (searchitemm!=null)
+                    {
+                        country = db.Countries.Where(x => x.Name.Contains(searchitemm));
+                    }
+                    else
+                    {
+                        country = db.Countries;
+                    }
+                    var modifieData = country.Select(x => new
+                    {
+                        id = x.CountryID,
+                        text = x.Name
+                    });
+                    return Json(modifieData, JsonRequestBehavior.AllowGet);
+                }               
+            }
+            catch (Exception e)
+            {
+                Logger.Savefile(e.ToString());
+            }
+            return Json("0", JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult GetListDeparment(string searchitemm)
+        {
+            try
+            {
+                if (Session["UserID"].ToString().Trim() != null)
+                {
+                   // var country = db.Deparments.ToList();
+                    if (searchitemm != null)
+                    {
+                        var country = db.Deparments.Where(x => x.Name.Contains(searchitemm)).ToList();
+                    }
+                    var modifieData = db.Deparments.Select(x => new
+                    {
+                        id = x.DeparmentID,
+                        text = x.Name
+                    });
+                    return Json(modifieData, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception e)
+            {
+                Logger.Savefile(e.ToString());
+            }
+            return Json("0", JsonRequestBehavior.AllowGet);
+        }
+    
+        public JsonResult AddDeparment(EmployeesModel model)
+        {
+            string result = "Fail";
+            try
+            {                
+                db.Employees.Add(new Employee {EmployeeID = model.EmployeeID,Name=model.Name,Position=model.Position,Office=model.Office,Age=model.Age,Salary=model.Salary,IDCountry=model.IDCountry,IDDeparment=model.IDDeparment });
+                db.SaveChanges();
+                result = "Susscess";
+                GetListEmployee();
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                //Logger.Savefile("e);
+                e.Savefile();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

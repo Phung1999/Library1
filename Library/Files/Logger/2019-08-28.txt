@@ -1,0 +1,16 @@
+﻿8/28/2019 10:21:35 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:21:52 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:22:06 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:22:57 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:24:00 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:24:14 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:28:03 AMSystem.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Library.Areas.Admin.Controllers.LoginAjaxController.Menu() in D:\learn\Tulam\Library\Library\Areas\Admin\Controllers\LoginAjaxController.cs:line 119
+8/28/2019 10:49:09 AMNo property or field 'Tên' exists in type 'Employee' (at index 0)
+8/28/2019 10:49:19 AMNo property or field 'Tên' exists in type 'Employee' (at index 0)

@@ -12,16 +12,14 @@ namespace LibraryDatabase.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Phongban
+    public partial class Deparment
     {
-        public int phongbanID { get; set; }
-        public string namephongban { get; set; }
-        public int idparent { get; set; }
-        public string diachipb { get; set; }
-        public string sdt { get; set; }
-        public System.DateTime datecreate { get; set; }
-        public System.DateTime datedelete { get; set; }
-        public int idnhanvien { get; set; }
-        public int nhomqtid { get; set; }
+        public int DeparmentID { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Phone { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> LastEdit { get; set; }
+        public Nullable<int> IDGroup { get; set; }
     }
 }

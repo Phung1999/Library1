@@ -12,10 +12,13 @@ namespace LibraryDatabase.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class Quoctich
+    public partial class Group
     {
-        public int idquoctich { get; set; }
-        public string namequoctich { get; set; }
-        public System.DateTime datecreate { get; set; }
+        public int GroupID { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> LastEdit { get; set; }
+        public Nullable<bool> IsDelete { get; set; }
+        public Nullable<bool> IsBlocked { get; set; }
     }
 }

@@ -12,13 +12,11 @@ namespace LibraryDatabase.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class NhomQT
+    public partial class Country
     {
-        public int idnhomqt { get; set; }
-        public string tennhomqt { get; set; }
-        public System.DateTime datecreate { get; set; }
-        public System.DateTime datedelete { get; set; }
-        public bool isdelete { get; set; }
-        public bool isblocked { get; set; }
+        public int CountryID { get; set; }
+        public string Name { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
+        public Nullable<System.DateTime> LastEdit { get; set; }
     }
 }

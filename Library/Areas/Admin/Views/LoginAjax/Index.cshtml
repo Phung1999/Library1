@@ -61,7 +61,7 @@
                     @* @Html.ActionLink("Login", "Login", "Login", new { @class = "btn btn-primary btn-block" })*@
                 </form>
                 <div>
-                    <button type="submit" class="btn btn-primary btn-block" onclick="Login()">Login</button>
+                    <button id="login" type="submit" class="btn btn-primary btn-block" onclick="Login()">Login</button>
                 </div>
                 <div class="text-center">
                     <a class="d-block small mt-3" href="register.html">Register an Account</a>
@@ -89,6 +89,7 @@
                     $("#loginFrom")[0].reset();
                     $("#msg").show();
                 } else {
+                    $("#login").hide();
                     window.location.href = "/Admin/LoginAjax/AfterLogin";
                     $("#msg").hide();
                 }

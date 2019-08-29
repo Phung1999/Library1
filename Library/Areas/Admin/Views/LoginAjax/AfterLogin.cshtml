@@ -1,104 +1,130 @@
-﻿@{
+﻿@model Library.Areas.Admin.Models.EmployeesModel
+
+@{
     ViewBag.Title = "AfterLogin";
     Layout = "~/Areas/Admin/Views/Shared/_AdminMain.cshtml";
 }
 @if (Session["UserName"] != null)
-{ 
+{
     <div>
         Welcome :<a href="#">@Session["UserName"]</a><br />
         <a href="Logout"> Logout</a>
     </div>
 }
 <div class="container-fluid">
-
-    <!-- Breadcrumbs-->
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
-        </li>
-        <li class="breadcrumb-item active">Overview</li>
-    </ol>
-
-    <!-- Icon Cards-->
-    <div class="row">
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-primary o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-comments"></i>
-                    </div>
-                    <div class="mr-5">26 New Messages!</div>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script src="/Scripts/select2.min.js"></script>
+    <br />
+    <form style="width:500px" id="AddDeparment">
+        <div class="form-group">
+            <div class="form-label-group">
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.EmployeeID, new { @type = "text", @id = "STT", @placeholder = "STT", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.EmployeeID, new { @for = "STT" })
                 </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                    </span>
-                </a>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Name, new { @type = "text", @id = "Name", @placeholder = "Họ và Tên", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Name, new { @for = "Name" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Position, new { @type = "text", @id = "Position", @placeholder = "Chức vụ", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Position, new { @for = "Position" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Office, new { @type = "text", @id = "Office", @placeholder = "Phòng ban", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Office, new { @for = "Office" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Age, new { @type = "text", @id = "Age", @placeholder = "Tuổi", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Age, new { @for = "Age" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Salary, new { @type = "text", @id = "Salary", @placeholder = "Lương", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Salary, new { @for = "Salary" })
+                </div>
+                <br />
+                <div class="form-label-group">
+                    <select name="IDCountry" id="Select" class="Country" style="width:300px"></select>
+                </div>
+                <br />
+                <div class="form-label-group">
+                    <select name="IDDeparment" class="Deparment" style="width:300px"></select>
+                </div>
             </div>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-warning o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-list"></i>
-                    </div>
-                    <div class="mr-5">11 New Tasks!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                    </span>
-                </a>
-            </div>
+        <br />
+        <div>
+            <button class="btn btn-primary btn-block" type="submit" onclick="Add()" style="width:100px">
+                Thêm
+            </button>
         </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-success o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-shopping-cart"></i>
-                    </div>
-                    <div class="mr-5">123 New Orders!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                    </span>
-                </a>
-            </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 mb-3">
-            <div class="card text-white bg-danger o-hidden h-100">
-                <div class="card-body">
-                    <div class="card-body-icon">
-                        <i class="fas fa-fw fa-life-ring"></i>
-                    </div>
-                    <div class="mr-5">13 New Tickets!</div>
-                </div>
-                <a class="card-footer text-white clearfix small z-1" href="#">
-                    <span class="float-left">View Details</span>
-                    <span class="float-right">
-                        <i class="fas fa-angle-right"></i>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </div>
+    </form>
+    <script>
+        //GetListCountry
+        $(".Country").select2({
+            placeholder: "Đất nước",
+            theme: "classic",
+            ajax: {
+                url: "/LoginAjax/GetListCountry",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        searchitemm: params.term
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
+        $(".Deparment").select2({
+            placeholder: "Phòng ban",
+            theme: "classic",
+            ajax: {
+                url: "/LoginAjax/GetListDeparment",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        searchitemm: params.term
+                    };
 
-    <!-- Area Chart Example-->
-    @*<div class="card mb-3">
-        <div class="card-header">
-            <i class="fas fa-chart-area"></i>
-            Area Chart Example
-        </div>
-        <div class="card-body">
-            <canvas id="myAreaChart" width="100%" height="30"></canvas>
-        </div>
-        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-    </div>*@
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
 
+        var Add = function () {
+            var data = $("#AddDeparment").serialize();
+            $.ajax({
+                type: "post",
+                url: "/LoginAjax/AddDeparment",
+                data: data,
+                success: function (result) {
+                    if (result == "Fail") {
+                        $("#AddDeparment")[0].reset();
+                        Window.alter("Giá trị bị trùng lặp");
+                    } else {
+                        $("#AddDeparment")[0].reset();
+                        Window.alter("Đã thêm thành công");
+                    }
+                }
+            })
+        }
+    </script>
+    <br />
     <!-- DataTables Example -->
     <div class="card mb-3">
         <div class="card-header">
@@ -109,29 +135,33 @@
             <div class="table-responsive">
                 <table class="table table-bordered" id="employeetable" cellspacing="0">
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Salary</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                            <th>IDCountry</th>
+                            <th>IDDeparment</th>
+                        </tr>
                     </thead>
                     <tfoot>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Salary</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                            <th>IDCountry</th>
+                            <th>IDDeparment</th>
+                        </tr>
                     </tfoot>
                     @* Get data  *@
                 </table>
 
                 <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" rel="stylesheet" />
-            <link href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css" rel="stylesheet" />
-          @section scripts{
+                <link href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css" rel="stylesheet" />
+                @section scripts{
                     <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
                     <script src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
                     <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
@@ -140,33 +170,33 @@
                         $(document).ready(function () {
                             $("#employeetable").DataTable({
                                 "ajax": {
-                                    "url": "/LoginAjax/GetList",
+                                    "url": "/LoginAjax/GetListEmployee",
                                     "type": "POST",
                                     "datatype": "json"
-                    
                                 },
                                 "columns": [
                                     { "data": "Name", "name": "Name" },
                                     { "data": "Position", "name": "Position" },
                                     { "data": "Office", "name": "Office" },
-                                    {"data": "Age","data":"Age"},
+                                    { "data": "Age", "data": "Age" },
                                     {
                                         "data": "Salary",
-                                        "render": function(Salary) {
+                                        "render": function (Salary) {
                                             return Salary + " VNĐ";
                                         }
                                     },
+                                    { "data": "IDCountry", "data": "IDCountry" },
+                                    { "data": "IDDeparment", "data": "IDDeparment" },
                                 ],
                                 "serverSide": "true",
-                                "order":[0,"asc"],
+                                "order": [0, "asc"],
                                 "processing": "true",
                                 "language": {
-                                    "processing":"processing... please wait"
+                                    "processing": "processing... please wait"
                                 }
                             });
+
                         });
-
-
                     </script>
                 }
             </div>
@@ -175,14 +205,5 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
-<!-- Sticky Footer -->
-@*<footer class="sticky-footer">
-    <div class="container my-auto">
-        <div class="copyright text-center my-auto">
-            <span>Copyright © Your Website 2019</span>
-        </div>
-    </div>
-</footer>*@
 
 

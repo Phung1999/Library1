@@ -1,16 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="LibraryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Employee">
-    <Key>
-      <PropertyRef Name="EmployeeID" />
-    </Key>
-    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Age" Type="Int32" />
-    <Property Name="Salary" Type="Int32" />
-  </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -27,70 +16,6 @@
     </Key>
     <Property Name="UserGroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="IDRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Nhanvien">
-    <Key>
-      <PropertyRef Name="nhanvienid" />
-      <PropertyRef Name="idphongban" />
-      <PropertyRef Name="sdt" />
-      <PropertyRef Name="diachi" />
-      <PropertyRef Name="nhomqtid" />
-      <PropertyRef Name="datecreate" />
-      <PropertyRef Name="quoctichid" />
-      <PropertyRef Name="usename" />
-    </Key>
-    <Property Name="nhanvienid" Type="Int32" Nullable="false" />
-    <Property Name="idphongban" Type="Int32" Nullable="false" />
-    <Property Name="sdt" Type="String" MaxLength="13" FixedLength="true" Unicode="true" Nullable="false" />
-    <Property Name="diachi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="nhomqtid" Type="Int32" Nullable="false" />
-    <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="datedelete" Type="DateTime" Precision="3" />
-    <Property Name="quoctichid" Type="Int32" Nullable="false" />
-    <Property Name="usename" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-  </EntityType>
-  <EntityType Name="NhomQT">
-    <Key>
-      <PropertyRef Name="idnhomqt" />
-    </Key>
-    <Property Name="idnhomqt" Type="Int32" Nullable="false" />
-    <Property Name="tennhomqt" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="datedelete" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="isdelete" Type="Boolean" Nullable="false" />
-    <Property Name="isblocked" Type="Boolean" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Phongban">
-    <Key>
-      <PropertyRef Name="phongbanID" />
-      <PropertyRef Name="namephongban" />
-      <PropertyRef Name="idparent" />
-      <PropertyRef Name="diachipb" />
-      <PropertyRef Name="sdt" />
-      <PropertyRef Name="datecreate" />
-      <PropertyRef Name="datedelete" />
-      <PropertyRef Name="idnhanvien" />
-      <PropertyRef Name="nhomqtid" />
-    </Key>
-    <Property Name="phongbanID" Type="Int32" Nullable="false" />
-    <Property Name="namephongban" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="idparent" Type="Int32" Nullable="false" />
-    <Property Name="diachipb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="sdt" Type="String" MaxLength="13" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="datedelete" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="idnhanvien" Type="Int32" Nullable="false" />
-    <Property Name="nhomqtid" Type="Int32" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Quoctich">
-    <Key>
-      <PropertyRef Name="idquoctich" />
-      <PropertyRef Name="namequoctich" />
-      <PropertyRef Name="datecreate" />
-    </Key>
-    <Property Name="idquoctich" Type="Int32" Nullable="false" />
-    <Property Name="namequoctich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <Property Name="datecreate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
   <EntityType Name="QuyenUser">
     <Key>
@@ -134,13 +59,8 @@
     <Property Name="IDMainMenu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
   </EntityType>
   <EntityContainer Name="LibraryDBEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Employees" EntityType="Self.Employee" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <EntitySet Name="Credentials" EntityType="Self.Credential" />
-    <EntitySet Name="Nhanviens" EntityType="Self.Nhanvien" />
-    <EntitySet Name="NhomQTs" EntityType="Self.NhomQT" />
-    <EntitySet Name="Phongbans" EntityType="Self.Phongban" />
-    <EntitySet Name="Quoctiches" EntityType="Self.Quoctich" />
     <EntitySet Name="QuyenUsers" EntityType="Self.QuyenUser" />
     <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
     <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
@@ -148,6 +68,11 @@
     <EntitySet Name="MainMenus" EntityType="LibraryDBModel.MainMenu" />
     <EntitySet Name="Menus" EntityType="LibraryDBModel.Menu" />
     <EntitySet Name="SubMenus" EntityType="LibraryDBModel.SubMenu" />
+    <EntitySet Name="Countries" EntityType="LibraryDBModel.Country" />
+    <EntitySet Name="Deparments" EntityType="LibraryDBModel.Deparment" />
+    <EntitySet Name="Employees" EntityType="LibraryDBModel.Employee" />
+    <EntitySet Name="Groups" EntityType="LibraryDBModel.Group" />
+    <EntitySet Name="Staffs" EntityType="LibraryDBModel.Staff" />
   </EntityContainer>
   <EntityType Name="MainMenu">
     <Key>
@@ -173,5 +98,62 @@
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="SubURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="IDMainMenu" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastEdit" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Deparment">
+    <Key>
+      <PropertyRef Name="DeparmentID" />
+    </Key>
+    <Property Name="DeparmentID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastEdit" Type="DateTime" Precision="3" />
+    <Property Name="IDGroup" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="Salary" Type="Int32" />
+    <Property Name="IDCountry" Type="Int32" />
+    <Property Name="IDDeparment" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="GroupID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastEdit" Type="DateTime" Precision="3" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <Property Name="IsBlocked" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Staff">
+    <Key>
+      <PropertyRef Name="StaftID" />
+    </Key>
+    <Property Name="StaftID" Type="Int32" Nullable="false" />
+    <Property Name="IDDeparmet" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="LastEdit" Type="DateTime" Precision="3" />
+    <Property Name="IDCountry" Type="Int32" />
   </EntityType>
 </Schema>

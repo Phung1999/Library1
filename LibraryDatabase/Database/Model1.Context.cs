@@ -25,13 +25,8 @@ namespace LibraryDatabase.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Employee> Employees { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Credential> Credentials { get; set; }
-        public virtual DbSet<Nhanvien> Nhanviens { get; set; }
-        public virtual DbSet<NhomQT> NhomQTs { get; set; }
-        public virtual DbSet<Phongban> Phongbans { get; set; }
-        public virtual DbSet<Quoctich> Quoctiches { get; set; }
         public virtual DbSet<QuyenUser> QuyenUsers { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
@@ -39,5 +34,10 @@ namespace LibraryDatabase.Database
         public virtual DbSet<MainMenu> MainMenus { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<SubMenu> SubMenus { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<Deparment> Deparments { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Group> Groups { get; set; }
+        public virtual DbSet<Staff> Staffs { get; set; }
     }
 }

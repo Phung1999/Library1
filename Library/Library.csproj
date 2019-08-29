@@ -171,6 +171,7 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\HasCredentialAtrribute.cs" />
     <Compile Include="Areas\Admin\Models\AcountModel.cs" />
+    <Compile Include="Areas\Admin\Models\EmployeesModel.cs" />
     <Compile Include="Areas\Admin\Models\MenuModel.cs" />
     <Compile Include="Areas\Admin\Models\User.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1967,6 +1968,8 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\select2.min.css" />
+    <Content Include="Scripts\select2.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
