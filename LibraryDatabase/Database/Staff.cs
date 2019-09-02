@@ -14,10 +14,12 @@ namespace LibraryDatabase.Database
     
     public partial class Staff
     {
-        public int StaftID { get; set; }
-        public Nullable<int> IDDeparmet { get; set; }
+        public int StaffID { get; set; }
+        public string Name { get; set; }
+        public Nullable<int> IDDeparment { get; set; }
         public string Phone { get; set; }
         public string Address { get; set; }
+        public Nullable<int> nhomqtid { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> LastEdit { get; set; }
         public Nullable<int> IDCountry { get; set; }

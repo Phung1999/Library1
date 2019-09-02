@@ -78,25 +78,25 @@ namespace LibraryDatabase.Dao
             }
         }
 
-        public List<string> GetListCredential(string userName)
-        {
-            var user = db.Users.Single(x => x.UserName == userName);
-            var data = (from a in db.Credentials
-                        join b in db.UserGroups on a.UserGroupID equals b.UserGroupID
-                        join c in db.UserRoles on a.IDRole equals c.UserRoleID
-                where b.UserGroupID == user.IDUserGroup
-                        select new
-                        {
-                            RoleID = a.IDRole,
-                            UserGroupID = a.UserGroupID
-                        }).AsEnumerable().Select(x => new Credential()
-                        {
-                            IDRole = x.RoleID,
-                            UserGroupID = x.UserGroupID
-                        });
-            return data.Select(x => x.IDRole).ToList();
+        //public List<string> GetListCredential(string userName)
+        //{
+        //    var user = db.Users.Single(x => x.UserName == userName);
+        //    var data = (from a in db.Credentials
+        //                join b in db.UserGroups on a.UserGroupID equals b.UserGroupID
+        //                join c in db.UserRoles on a.IDRole equals c.UserRoleID
+        //        where b.UserGroupID == user.IDUserGroup
+        //                select new
+        //                {
+        //                    RoleID = a.IDRole,
+        //                    UserGroupID = a.UserGroupID
+        //                }).AsEnumerable().Select(x => new Credential()
+        //                {
+        //                    IDRole = x.RoleID,
+        //                    UserGroupID = x.UserGroupID
+        //                });
+        //    return data.Select(x => x.IDRole).ToList();
 
-        }
+        //}
     }
 
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="025b1bcfb0c546cab5ead418af626632" Name="Diagram1">
+        <EntityTypeShape EntityType="LibraryDBModel1.Credential" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel1.MainMenu" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel1.SubMenu" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel1.UserRole" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel1.User" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="LibraryDBModel1.Country" Width="1.5" PointX="7.75" PointY="7" />
+        <EntityTypeShape EntityType="LibraryDBModel1.PermissionsUser" Width="2" PointX="0.5" PointY="5.875" />
+        <EntityTypeShape EntityType="LibraryDBModel1.Staff" Width="1.5" PointX="6" PointY="6.25" />
+        <EntityTypeShape EntityType="LibraryDBModel1.Menu" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="LibraryDBModel1.Deparment" Width="1.5" PointX="10.375" PointY="4.75" />
+        <EntityTypeShape EntityType="LibraryDBModel1.GroupUser" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="LibraryDBModel1.Employee" Width="1.5" PointX="3.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

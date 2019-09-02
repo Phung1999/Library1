@@ -1,24 +1,25 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
+
 @foreach (var menulevel1 in ViewBag.MenuLevel1)
 {
-    if (menulevel1.ParentId==0)
-    {       
-        <a class="nav-link dropdown-toggle" href="#" id="@menulevel1.MenuName" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>@menulevel1.MenuName</span>
-        </a>
-        @*@string Menu1= @menulevel1.MenuName;*@
+    if (menulevel1.ParentId == 0)
+    {
+        @Html.ActionLink((string)menulevel1.MenuName, (string)menulevel1.MenuName, "Adnmin", null);
+    <a class="nav-link dropdown-toggle" href="#" id="@menulevel1.MenuName" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        @* <span>@menulevel1.MenuName</span>*@
+    </a>
+    @*@string Menu1= @menulevel1.MenuName;*@
     }
-    else if(menulevel1.ParentId!=0)
+    else if (menulevel1.ParentId != 0)
     {
         <li class="nav-item dropdown">
             @*<a class="nav-link dropdown-toggle" href="#" id="@menulevel1.MenuName" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>@menulevel1.MenuName</span>
-            </a>*@
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>@menulevel1.MenuName</span>
+                </a>*@
             @foreach (var menulevel2 in ViewBag.MenuLevel1)
             {
                 if (menulevel2.ParentId == menulevel1.ParentId)
@@ -27,15 +28,86 @@
                         @*<h6 class="dropdown-header">@menulevel1.MenuName:</h6>*@
                         <a class="dropdown-item" href="login.html">@menulevel2.MenuName</a>
                         @*<a class="dropdown-item" href="register.html">Register</a>
-                        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>*@
-                
+                            <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>*@
+
                     </div>
                 }
             }
-           
+
         </li>
     }
-    
+
+}
+@foreach (var menulevel1 in ViewBag.MenuLevel1)
+{
+    if (menulevel1.ParentId == 0)
+    {
+        @Html.ActionLink((string)menulevel1.MenuName, (string)menulevel1.MenuName, "Adnmin", null);
+    <a class="nav-link dropdown-toggle" href="#" id="@menulevel1.MenuName" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        @*<i class="fas fa-fw fa-folder"></i>*@
+        @* <span>@menulevel1.MenuName</span>*@
+    </a>
+    @*@string Menu1= @menulevel1.MenuName;*@
+    }
+    else if (menulevel1.ParentId != 0)
+    {
+        foreach (var item in ViewBag.MenuLevel2)
+        {
+            if (menulevel1.Id == item.ParentId)
+            {
+                <li style="color:white;">
+                    @item.MenuName
+
+                </li>
+            }
+        }
+
+    }
+
 }
 
+<li class="nav-item dropdown">
+    @foreach (var menulevel1 in ViewBag.MenuLevel1)
+    {
+        if (menulevel1.ParentId == 0)
+        {
+          //  @Html.ActionLink((string)menulevel1.MenuName, (string)menulevel1.MenuName, "Adnmin", null);
+        <a class="nav-link dropdown-toggle" href="@menulevel1.Id" id="@menulevel1.Id" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            @*<i class="fas fa-fw fa-folder"></i>*@
+            <span>@menulevel1.MenuName</span>
+        </a>
+        }
+        else if (menulevel1.ParentId != 0)
+        {
+            foreach (var item in ViewBag.MenuLevel2)
+            {
+                if (menulevel1.Id == item.ParentId)
+                {
+                    <div class="dropdown-menu" aria-labelledby="@menulevel1.Id">
+                        <a class="dropdown-item" href="login.html">@item.MenuName</a>
+                    </div>
+                }
+            }
+        
+        }
 
+    }
+
+
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-fw fa-folder"></i>
+        <span>Pages</span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <h6 class="dropdown-header">Login Screens:</h6>
+        <a class="dropdown-item" href="login.html">Login</a>
+        <a class="dropdown-item" href="register.html">Register</a>
+        <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+        <div class="dropdown-divider"></div>
+        <h6 class="dropdown-header">Other Pages:</h6>
+        <a class="dropdown-item" href="404.html">404 Page</a>
+        <a class="dropdown-item" href="blank.html">Blank Page</a>
+    </div>
+</li>

@@ -7,9 +7,9 @@ namespace Library.Areas.Admin.Models
 {
     public class EmployeesModel
     {
-        [Required]
-        [Display(Name = "STT")]
-        public int EmployeeID { get; set; }
+        //[Required]
+        //[Display(Name = "STT")]
+        //public int EmployeeID { get; set; }
         [Required]
         [Display(Name="Họ và tên nhân viên")]
         [StringLength(50)]

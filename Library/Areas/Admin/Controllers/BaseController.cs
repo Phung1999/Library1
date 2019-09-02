@@ -1,7 +1,7 @@
 ﻿using LibraryCommanCore;
 using System.Web.Mvc;
 using System.Web.Routing;
-using static LibraryCommanCore.CommonConstants;
+
 
 namespace Library.Areas.Admin.Controllers
 {
@@ -12,9 +12,9 @@ namespace Library.Areas.Admin.Controllers
         {
             try
             {
-                if (USER_SESSION != null)
+                if (CommonConstants.USER_SESSION != null)
                 {
-                    var session = (UserLogin)Session[USER_SESSION];
+                    var session = (UserLogin)Session[CommonConstants.USER_SESSION];
                     if (session == null)
                     {
                         filterContext.Result = new RedirectToRouteResult(new

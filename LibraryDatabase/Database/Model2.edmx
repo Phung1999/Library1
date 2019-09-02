@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LibraryDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
+        </EntityType>
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+          </Key>
+          <Property Name="UserGroupID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IDRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Deparment">
+          <Key>
+            <PropertyRef Name="DeparmentID" />
+          </Key>
+          <Property Name="DeparmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IdParent" Type="int" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="varchar" MaxLength="13" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IDGroupUser" Type="int" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Position" Type="varchar" MaxLength="50" />
+          <Property Name="Office" Type="varchar" MaxLength="50" />
+          <Property Name="Age" Type="int" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="IDCountry" Type="int" />
+          <Property Name="IDDeparment" Type="int" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="GroupUserID" />
+          </Key>
+          <Property Name="GroupUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Detail" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsBlocked" Type="bit" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MainMenu">
+          <Key>
+            <PropertyRef Name="MainMenuID" />
+          </Key>
+          <Property Name="MainMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="MainURL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="MenuURL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PermissionsUser">
+          <Key>
+            <PropertyRef Name="PermissionsUserID" />
+          </Key>
+          <Property Name="PermissionsUserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Detail" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDDeparment" Type="int" />
+          <Property Name="Phone" Type="nchar" MaxLength="13" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="nhomqtid" Type="int" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IDCountry" Type="int" />
+        </EntityType>
+        <EntityType Name="SubMenu">
+          <Key>
+            <PropertyRef Name="SubMenuID" />
+          </Key>
+          <Property Name="SubMenuID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubURL" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDMainMenu" Type="int" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="PassWord" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="LastEdit" Type="datetime" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
+          <Property Name="IDUserGroup" Type="nvarchar" MaxLength="50" />
+          <Property Name="IDMainMenu" Type="nchar" MaxLength="20" />
+          <Property Name="IDStaff" Type="int" />
+        </EntityType>
+        <EntityContainer Name="LibraryDBModel1StoreContainer">
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Credential" EntityType="Self.Credential" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Deparment" EntityType="Self.Deparment" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GroupUser" EntityType="Self.GroupUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MainMenu" EntityType="Self.MainMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Menu" EntityType="Self.Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermissionsUser" EntityType="Self.PermissionsUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubMenu" EntityType="Self.SubMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibraryDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Credential">
+          <Key>
+            <PropertyRef Name="UserGroupID" />
+          </Key>
+          <Property Name="UserGroupID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IDRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MainMenu">
+          <Key>
+            <PropertyRef Name="MainMenuID" />
+          </Key>
+          <Property Name="MainMenuID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MainURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SubMenu">
+          <Key>
+            <PropertyRef Name="SubMenuID" />
+          </Key>
+          <Property Name="SubMenuID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDMainMenu" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="PassWord" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+          <Property Name="IDUserGroup" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDMainMenu" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="IDStaff" Type="Int32" />
+        </EntityType>
+        <EntityContainer Name="LibraryDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Credentials" EntityType="Self.Credential" />
+          <EntitySet Name="MainMenus" EntityType="Self.MainMenu" />
+          <EntitySet Name="SubMenus" EntityType="Self.SubMenu" />
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Countries" EntityType="LibraryDBModel1.Country" />
+          <EntitySet Name="PermissionsUsers" EntityType="LibraryDBModel1.PermissionsUser" />
+          <EntitySet Name="Staffs" EntityType="LibraryDBModel1.Staff" />
+          <EntitySet Name="Menus" EntityType="LibraryDBModel1.Menu" />
+          <EntitySet Name="Deparments" EntityType="LibraryDBModel1.Deparment" />
+          <EntitySet Name="GroupUsers" EntityType="LibraryDBModel1.GroupUser" />
+          <EntitySet Name="Employees" EntityType="LibraryDBModel1.Employee" />
+        </EntityContainer>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PermissionsUser">
+          <Key>
+            <PropertyRef Name="PermissionsUserID" />
+          </Key>
+          <Property Name="PermissionsUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Staff">
+          <Key>
+            <PropertyRef Name="StaffID" />
+          </Key>
+          <Property Name="StaffID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IDDeparment" Type="Int32" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="true" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="nhomqtid" Type="Int32" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IDCountry" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Menu">
+          <Key>
+            <PropertyRef Name="MenuID" />
+          </Key>
+          <Property Name="MenuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MenuURL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Deparment">
+          <Key>
+            <PropertyRef Name="DeparmentID" />
+          </Key>
+          <Property Name="DeparmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdParent" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+          <Property Name="IDGroupUser" Type="Int32" />
+        </EntityType>
+        <EntityType Name="GroupUser">
+          <Key>
+            <PropertyRef Name="GroupUserID" />
+          </Key>
+          <Property Name="GroupUserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Detail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsBlocked" Type="Boolean" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEdit" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Office" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="IDCountry" Type="Int32" />
+          <Property Name="IDDeparment" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibraryDBModel1StoreContainer" CdmEntityContainer="LibraryDBEntities1">
+          <EntitySetMapping Name="Credentials">
+            <EntityTypeMapping TypeName="LibraryDBModel1.Credential">
+              <MappingFragment StoreEntitySet="Credential">
+                <ScalarProperty Name="UserGroupID" ColumnName="UserGroupID" />
+                <ScalarProperty Name="IDRole" ColumnName="IDRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MainMenus">
+            <EntityTypeMapping TypeName="LibraryDBModel1.MainMenu">
+              <MappingFragment StoreEntitySet="MainMenu">
+                <ScalarProperty Name="MainMenuID" ColumnName="MainMenuID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MainURL" ColumnName="MainURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubMenus">
+            <EntityTypeMapping TypeName="LibraryDBModel1.SubMenu">
+              <MappingFragment StoreEntitySet="SubMenu">
+                <ScalarProperty Name="SubMenuID" ColumnName="SubMenuID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SubURL" ColumnName="SubURL" />
+                <ScalarProperty Name="IDMainMenu" ColumnName="IDMainMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRoles">
+            <EntityTypeMapping TypeName="LibraryDBModel1.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="LibraryDBModel1.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IDStaff" ColumnName="IDStaff" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="IDUserGroup" ColumnName="IDUserGroup" />
+                <ScalarProperty Name="IDMainMenu" ColumnName="IDMainMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="LibraryDBModel1.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermissionsUsers">
+            <EntityTypeMapping TypeName="LibraryDBModel1.PermissionsUser">
+              <MappingFragment StoreEntitySet="PermissionsUser">
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PermissionsUserID" ColumnName="PermissionsUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Staffs">
+            <EntityTypeMapping TypeName="LibraryDBModel1.Staff">
+              <MappingFragment StoreEntitySet="Staff">
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="nhomqtid" ColumnName="nhomqtid" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IDDeparment" ColumnName="IDDeparment" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StaffID" ColumnName="StaffID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Menus">
+            <EntityTypeMapping TypeName="LibraryDBModel1.Menu">
+              <MappingFragment StoreEntitySet="Menu">
+                <ScalarProperty Name="MenuURL" ColumnName="MenuURL" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Deparments">
+            <EntityTypeMapping TypeName="LibraryDBModel1.Deparment">
+              <MappingFragment StoreEntitySet="Deparment">
+                <ScalarProperty Name="IDGroupUser" ColumnName="IDGroupUser" />
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IdParent" ColumnName="IdParent" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DeparmentID" ColumnName="DeparmentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GroupUsers">
+            <EntityTypeMapping TypeName="LibraryDBModel1.GroupUser">
+              <MappingFragment StoreEntitySet="GroupUser">
+                <ScalarProperty Name="LastEdit" ColumnName="LastEdit" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupUserID" ColumnName="GroupUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="LibraryDBModel1.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IDDeparment" ColumnName="IDDeparment" />
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="Office" ColumnName="Office" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -13,7 +13,10 @@ namespace Library.Areas.Admin.Controllers
 {
     public class LoginAjaxController : Controller
     {
-        private LibraryDBEntities db = new LibraryDBEntities();
+        //at company
+        // private LibraryDBEntities db = new LibraryDBEntities();
+        //at home 
+        private LibraryDBEntities1 db = new LibraryDBEntities1();
         // GET: Admin/LoginAjax
         public ActionResult Index()
         {
@@ -25,7 +28,7 @@ namespace Library.Areas.Admin.Controllers
             string result = "Fail";
             try
             {
-                var DataItem = db.Users.Where(x => x.UserName.Equals( model.Username) && x.PassWord.Equals( model.Password))
+                var DataItem = db.Users.Where(x => x.UserName.Equals(model.Username) && x.PassWord.Equals(model.Password))
               .FirstOrDefault();
                 if (DataItem != null)
                 {
@@ -40,7 +43,7 @@ namespace Library.Areas.Admin.Controllers
                 //Logger.Savefile("e);
                 e.Savefile();
             }
-            return Json(result, JsonRequestBehavior.AllowGet);   
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult AfterLogin()
         {
@@ -61,20 +64,25 @@ namespace Library.Areas.Admin.Controllers
             return RedirectToAction("Index", "LoginAjax");
         }
         [HttpPost]
-        public ActionResult GetListEmployee()
+        public ActionResult GetListEmployee(string Load)
         {
             try
             {
                 //Server Side Parameter
                 int start = Convert.ToInt32(Request["start"]);
                 int length = Convert.ToInt32(Request["length"]);
-                string searchValue = Request["search[value]"]?.Trim() ?? string.Empty;
-                string sortColumnName = Request["columns[" + Request["order[0][column]"] + "][name]"];
-                string sortDirection = Request["order[0][dir]"];
+                //string searchValue = Request["search[value]"]?.Trim() ?? string.Empty;
+                string searchValue, sortColumnName, sortDirection;
+                searchValue = Request["search[value]"].Trim() ?? string.Empty;
+                sortColumnName = Request["columns[" + Request["order[0][column]"] + "][name]"];
+                sortDirection = Request["order[0][dir]"];
                 //chuyển biến dữ liệu kiểu đối tượng
 
-               // List<Employee> empList = new List<Employee>();
-                using (LibraryDBEntities db = new LibraryDBEntities())
+                // List<Employee> empList = new List<Employee>();
+                //ở công ty 
+                //using (LibraryDBEntities db = new LibraryDBEntities())
+                //Ở nhà 
+                using (LibraryDBEntities1 db = new LibraryDBEntities1())
                 {
                     var totalrows = db.Employees.Count();
                     IQueryable<Employee> data;
@@ -89,7 +97,7 @@ namespace Library.Areas.Admin.Controllers
                         data = db.Employees.
                             Where(x => x.Name.Contains(searchValue) || x.Position.Contains(searchValue) || x.Office.Contains(searchValue) || x.Age.ToString().Contains(searchValue) || x.Salary.ToString().Contains(searchValue));
                         totalrowsafterfiltering = data.Count();
-                    }                   
+                    }
                     var employees = data.OrderBy(sortColumnName + " " + sortDirection).Skip(start).Take(length).ToList();
                     return Json(new { data = employees, draw = Request["draw"], recordsTotal = totalrows, recordsFiltered = totalrowsafterfiltering }, JsonRequestBehavior.AllowGet);
                 }
@@ -98,7 +106,62 @@ namespace Library.Areas.Admin.Controllers
             {
                 Logger.Savefile("" + e);
             }
-            return Json("0",JsonRequestBehavior.AllowGet);
+            return Json("0", JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult AddEmployee(EmployeesModel model)
+        {
+            string result = "Fail";
+            try
+            {
+                db.Employees.Add(new Employee { EmployeeID = 0, Name = model.Name, Position = model.Position, Office = model.Office, Age = model.Age, Salary = model.Salary, IDCountry = model.IDCountry, IDDeparment = model.IDDeparment });
+                db.SaveChanges();
+                result = "Susscess";
+                GetListEmployee("1");
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                //Logger.Savefile("e);
+                e.Savefile();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public ActionResult DeleteEmployee(int id)
+        {
+            string result = "Fail";
+            try
+            {
+                Employee emp = db.Employees.Where(x => x.EmployeeID == id).FirstOrDefault();
+                db.Employees.Remove(emp);
+                db.SaveChanges();
+                result = "Susscess";
+                GetListEmployee("");
+                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                e.Savefile();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult EditEmployee(int id)
+        {
+            string result = "Fail";
+            try
+            {
+                Employee emp = db.Employees.Where(x => x.EmployeeID == id).FirstOrDefault();
+                db.Employees.Remove(emp);
+                db.SaveChanges();
+                result = "Susscess";
+                GetListEmployee("");
+                return Json(new { success = true, message = "Deleted Successfully" }, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception e)
+            {
+                e.Savefile();
+            }
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Menu()
         {
@@ -111,7 +174,7 @@ namespace Library.Areas.Admin.Controllers
                     if (cut.Count() > 1)
                     {
                         string[] cutnow = cut.Split(',');
-                        for (int i = 0; i < cutnow.Count() ; i++)
+                        for (int i = 0; i < cutnow.Count(); i++)
                         {
                             int idmain = int.Parse(cutnow[i]);
                             var DataMenu = db.MainMenus.Where(x => x.MainMenuID == idmain).FirstOrDefault();
@@ -124,11 +187,11 @@ namespace Library.Areas.Admin.Controllers
                     }
                     else
                     {
-                        //int idmain = int.Parse(cut);
-                        if (!int.TryParse(cut, out var idmain))
-                        {
-                            idmain = 0;
-                        }                        
+                        int idmain = int.Parse(cut);
+                        //if (!int.TryParse(cut, out var idmain))
+                        //{
+                        //    idmain = 0;
+                        //}                        
                         var DataMenu = db.MainMenus.Where(x => x.MainMenuID == idmain).FirstOrDefault();
                         listmenu.Add(new MenuModel() { Id = idmain, MenuName = DataMenu.Name, NameUrl = DataMenu.MainURL, ParentId = 0 });
                         var DataSub = db.SubMenus.Where(x => x.IDMainMenu == idmain).ToList();
@@ -137,6 +200,16 @@ namespace Library.Areas.Admin.Controllers
                                 listmenu.Add(new MenuModel() { Id = idmain, MenuName = DataSub[j].Name, NameUrl = DataSub[j].SubURL, ParentId = Convert.ToInt32(DataSub[j].IDMainMenu) });
                     }
                     ViewBag.MenuLevel1 = listmenu.ToList();
+                    List<MenuModel> list2 = new List<MenuModel>();
+                    foreach (var item in  listmenu)
+                    {
+                        if (item.ParentId!=0)
+                        {
+                            list2.Add(new MenuModel() { Id=item.Id,MenuName=item.MenuName,NameUrl=item.NameUrl,ParentId=item.ParentId});
+                        }
+                    }
+                    ViewBag.MenuLevel1 = listmenu.ToList();
+                    ViewBag.MenuLevel2 = list2.ToList();
                     //ViewBag.MenuLevel1 = GetMenuTree(listmenu, null);
                     //return View();
                     //return PartialView("~/Areas/Admin/Views/LoginAjax/Menu.cshtml");
@@ -166,10 +239,10 @@ namespace Library.Areas.Admin.Controllers
         {
             try
             {
-                if (Session["UserID"].ToString().Trim()!=null)
+                if (Session["UserID"].ToString().Trim() != null)
                 {
                     IQueryable<Country> country;
-                    if (searchitemm!=null)
+                    if (searchitemm != null)
                     {
                         country = db.Countries.Where(x => x.Name.Contains(searchitemm));
                     }
@@ -183,7 +256,7 @@ namespace Library.Areas.Admin.Controllers
                         text = x.Name
                     });
                     return Json(modifieData, JsonRequestBehavior.AllowGet);
-                }               
+                }
             }
             catch (Exception e)
             {
@@ -197,7 +270,7 @@ namespace Library.Areas.Admin.Controllers
             {
                 if (Session["UserID"].ToString().Trim() != null)
                 {
-                   // var country = db.Deparments.ToList();
+                    // var country = db.Deparments.ToList();
                     if (searchitemm != null)
                     {
                         var country = db.Deparments.Where(x => x.Name.Contains(searchitemm)).ToList();
@@ -216,24 +289,16 @@ namespace Library.Areas.Admin.Controllers
             }
             return Json("0", JsonRequestBehavior.AllowGet);
         }
-    
-        public JsonResult AddDeparment(EmployeesModel model)
+
+
+        public ActionResult Deparment()
         {
-            string result = "Fail";
-            try
-            {                
-                db.Employees.Add(new Employee {EmployeeID = model.EmployeeID,Name=model.Name,Position=model.Position,Office=model.Office,Age=model.Age,Salary=model.Salary,IDCountry=model.IDCountry,IDDeparment=model.IDDeparment });
-                db.SaveChanges();
-                result = "Susscess";
-                GetListEmployee();
-                return Json(result, JsonRequestBehavior.AllowGet);
-            }
-            catch (Exception e)
-            {
-                //Logger.Savefile("e);
-                e.Savefile();
-            }
-            return Json(result, JsonRequestBehavior.AllowGet);
+            List<PermissionModel> list = new List<PermissionModel>();
+            list.Add(new PermissionModel() { Name = "Thêm" });
+            list.Add(new PermissionModel() { Name = "Sửa" });
+            list.Add(new PermissionModel() { Name = "Xóa" });
+            ViewBag.Permission = list.ToList();
+            return View();
         }
 
     }

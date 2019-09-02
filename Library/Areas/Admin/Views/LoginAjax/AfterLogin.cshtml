@@ -11,19 +11,24 @@
         <a href="Logout"> Logout</a>
     </div>
 }
+<div>
+    <h1>
+        Quản lý
+    </h1>
+</div>
 <div class="container-fluid">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
     <script src="/Scripts/jquery-1.10.2.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
     <script src="/Scripts/select2.min.js"></script>
     <br />
-    <form style="width:500px" id="AddDeparment">
+    <form style="width:500px" id="AddEmployee">
         <div class="form-group">
             <div class="form-label-group">
-                <div class="form-label-group" style="width:200px">
+                @*<div class="form-label-group" style="width:200px">
                     @Html.TextBoxFor(model => model.EmployeeID, new { @type = "text", @id = "STT", @placeholder = "STT", @class = "form-control", @required = "required" })
                     @Html.LabelFor(model => model.EmployeeID, new { @for = "STT" })
-                </div>
+                </div>*@
                 <br />
                 <div class="form-label-group" style="width:200px">
                     @Html.TextBoxFor(model => model.Name, new { @type = "text", @id = "Name", @placeholder = "Họ và Tên", @class = "form-control", @required = "required" })
@@ -67,6 +72,7 @@
         </div>
     </form>
     <script>
+
         //GetListCountry
         $(".Country").select2({
             placeholder: "Đất nước",
@@ -107,24 +113,31 @@
         });
 
         var Add = function () {
-            var data = $("#AddDeparment").serialize();
+            var data = $("#AddEmployee").serialize();
             $.ajax({
                 type: "post",
-                url: "/LoginAjax/AddDeparment",
+                url: "/LoginAjax/AddEmployee",
                 data: data,
                 success: function (result) {
                     if (result == "Fail") {
-                        $("#AddDeparment")[0].reset();
+                        $("#AddEmployee")[0].reset();
                         Window.alter("Giá trị bị trùng lặp");
                     } else {
-                        $("#AddDeparment")[0].reset();
-                        Window.alter("Đã thêm thành công");
+                        $("#Name").val("");
+                        dataTable.ajax.reload();
                     }
                 }
             })
         }
     </script>
     <br />
+    @* Get data from table  *@
+    @*<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $('table tbody tr').click(function () {
+            alert($(this).text());
+        });
+    </script>*@
     <!-- DataTables Example -->
     <div class="card mb-3">
         <div class="card-header">
@@ -143,8 +156,12 @@
                             <th>Salary</th>
                             <th>IDCountry</th>
                             <th>IDDeparment</th>
+                            <th></th>
                         </tr>
                     </thead>
+                    <tbody>
+
+                    </tbody>
                     <tfoot>
                         <tr>
                             <th>Name</th>
@@ -154,6 +171,7 @@
                             <th>Salary</th>
                             <th>IDCountry</th>
                             <th>IDDeparment</th>
+                            <th></th>
                         </tr>
                     </tfoot>
                     @* Get data  *@
@@ -168,13 +186,13 @@
 
                     <script>
                         $(document).ready(function () {
-                            $("#employeetable").DataTable({
+                            dataTable=$("#employeetable").DataTable({
                                 "ajax": {
                                     "url": "/LoginAjax/GetListEmployee",
                                     "type": "POST",
                                     "datatype": "json"
                                 },
-                                "columns": [
+                                "columns": [                      
                                     { "data": "Name", "name": "Name" },
                                     { "data": "Position", "name": "Position" },
                                     { "data": "Office", "name": "Office" },
@@ -187,6 +205,13 @@
                                     },
                                     { "data": "IDCountry", "data": "IDCountry" },
                                     { "data": "IDDeparment", "data": "IDDeparment" },
+                                    {"data":"EmployeeID" , "render" : function (data) {
+                                         return "<a class='btn btn-default btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","Employee")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=Delete("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                                     },
+                                         //"orderable": false,
+                                         //"searchable":false,
+                                         "width":"150px"
+                                     },
                                 ],
                                 "serverSide": "true",
                                 "order": [0, "asc"],
@@ -205,5 +230,45 @@
     </div>
 
 </div>
+<script>
+    function Delete(id) {
+        if (confirm('Are You Sure to Delete this Employee Record ?')) {
+            $.ajax({
+                type: "POST",
+                url: '/LoginAjax/DeleteEmployee?id= ' + id,
+                success: function (data) {
+                    if (data.success) {
+                        dataTable.ajax.reload();
+
+                        $.notify(data.message, {
+                            globalPosition: "top center",
+                            className: "success"
+                        })
+
+                    }
+                }
+
+            });
+        }
+    }
+    function Edit(id) {
+        $.ajax({
+            type: "POST",
+            url: '/LoginAjax/EditEmployee?id= ' + id,
+            success: function (data) {
+                if (data.success) {
+                    dataTable.ajax.reload();
+
+                    $.notify(data.message, {
+                        globalPosition: "top center",
+                        className: "success"
+                    })
+
+                }
+            }
+
+        });
+    }
+</script>
 
 

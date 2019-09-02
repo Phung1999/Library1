@@ -171,8 +171,10 @@
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
     <Compile Include="Areas\Admin\HasCredentialAtrribute.cs" />
     <Compile Include="Areas\Admin\Models\AcountModel.cs" />
+    <Compile Include="Areas\Admin\Models\DeparmentModel.cs" />
     <Compile Include="Areas\Admin\Models\EmployeesModel.cs" />
     <Compile Include="Areas\Admin\Models\MenuModel.cs" />
+    <Compile Include="Areas\Admin\Models\PermissionModel.cs" />
     <Compile Include="Areas\Admin\Models\User.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -189,6 +191,7 @@
   <ItemGroup>
     <Content Include="Assets\Admin\css\sb-admin.css" />
     <Content Include="Assets\Admin\css\sb-admin.min.css" />
+    <Content Include="Assets\Admin\js\app.js" />
     <Content Include="Assets\Admin\js\demo\chart-area-demo.js" />
     <Content Include="Assets\Admin\js\demo\chart-bar-demo.js" />
     <Content Include="Assets\Admin\js\demo\chart-pie-demo.js" />
@@ -1957,6 +1960,7 @@
     <Content Include="Areas\Admin\Views\LoginAjax\AfterLogin.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAjax\Menu.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAjax\MenuViewBag.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAjax\Deparment.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

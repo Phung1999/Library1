@@ -12,3 +12,8 @@ D:\learn\Tulam\Library\LibraryCommanCore\bin\Debug\LibraryCommanCore.pdb
 D:\learn\Tulam\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.dll
 D:\learn\Tulam\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.pdb
 D:\learn\Tulam\Library\LibraryCommanCore\bin\Debug\System.Linq.Dynamic.dll
+E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\obj\Debug\LibraryCommanCore.dll
+E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\obj\Debug\LibraryCommanCore.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\bin\Debug\LibraryCommanCore.dll
+E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\bin\Debug\LibraryCommanCore.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\bin\Debug\System.Linq.Dynamic.dll

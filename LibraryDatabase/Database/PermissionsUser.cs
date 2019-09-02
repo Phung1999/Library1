@@ -12,9 +12,10 @@ namespace LibraryDatabase.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class QuyenUser
+    public partial class PermissionsUser
     {
-        public int quyenid { get; set; }
-        public string tenquyen { get; set; }
+        public int PermissionsUserID { get; set; }
+        public string Name { get; set; }
+        public string Detail { get; set; }
     }
 }

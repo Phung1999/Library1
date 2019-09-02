@@ -1,0 +1,205 @@
+﻿@model Library.Areas.Admin.Models.DeparmentModel
+@{
+    ViewBag.Title = "Deparment";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminMain.cshtml";
+}
+
+<div class="container-fluid">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
+    <script src="/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script src="/Scripts/select2.min.js"></script>
+    <br />
+    <form style="width:500px" id="AddDeparment">
+        <div class="form-group">
+            <div class="form-label-group">              
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Name, new { @type = "text", @id = "Name", @placeholder = "Tên phòng", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Name, new { @for = "Name" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.IdParent, new { @type = "text", @id = "IdParent", @placeholder = "ID Cha", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.IdParent, new { @for = "IdParent" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Address, new { @type = "text", @id = "Address", @placeholder = "Địa chỉ", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Address, new { @for = "Address" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.Phone, new { @type = "text", @id = "Phone", @placeholder = "Số điện thoại", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.Phone, new { @for = "Phone" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.CreateDate, new { @type = "text", @id = "CreateDate", @placeholder = "Ngày tạo", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.CreateDate, new { @for = "CreateDate" })
+                </div>
+                <br />
+                <div class="form-label-group" style="width:200px">
+                    @Html.TextBoxFor(model => model.LastEdit, new { @type = "text", @id = "LastEdit", @placeholder = "Ngày sửa gần nhất", @class = "form-control", @required = "required" })
+                    @Html.LabelFor(model => model.LastEdit, new { @for = "LastEdit" })
+                </div>
+                <br />
+                <div class="form-label-group">
+                    <select name="IDGroupUser" id="Select" class="GroupUser" style="width:300px"></select>
+                </div>
+                @*<br />
+                <div class="form-label-group">
+                    <select name="IDDeparment" class="Deparment" style="width:300px"></select>
+                </div>*@
+            </div>
+        </div>
+        <br />
+       
+            @foreach(var item in ViewBag.Permission)
+            {
+                  <button class="btn btn-primary btn-block" type="submit" onclick="Add()" style="width:100px">
+               @item.Name
+            </button>
+            }
+          
+       
+    </form>
+    <script>
+        //GetListCountry
+        $(".GroupUser").select2({
+            placeholder: "Nhóm sử dụng",
+            theme: "classic",
+            ajax: {
+                url: "/LoginAjax/GetListCountry",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        searchitemm: params.term
+                    };
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
+        $(".Deparment").select2({
+            placeholder: "Phòng ban",
+            theme: "classic",
+            ajax: {
+                url: "/LoginAjax/GetListDeparment",
+                dataType: "json",
+                data: function (params) {
+                    return {
+                        searchitemm: params.term
+                    };
+
+                },
+                processResults: function (data, params) {
+                    return {
+                        results: data
+                    };
+                }
+            }
+        });
+
+        var Add = function () {
+            var data = $("#AddDeparment").serialize();
+            $.ajax({
+                type: "post",
+                url: "/LoginAjax/AddDeparment",
+                data: data,
+                success: function (result) {
+                    if (result == "Fail") {
+                        $("#AddDeparment")[0].reset();
+                        Window.alter("Giá trị bị trùng lặp");
+                    } else {
+                        $("#AddDeparment")[0].reset();
+                        Window.alter("Đã thêm thành công");
+                    }
+                }
+            })
+        }
+    </script>
+    <br />
+    <!-- DataTables Example -->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-table"></i>
+            Data Table Example
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="employeetable" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                            <th>IDCountry</th>
+                            <th>IDDeparment</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Position</th>
+                            <th>Office</th>
+                            <th>Age</th>
+                            <th>Salary</th>
+                            <th>IDCountry</th>
+                            <th>IDDeparment</th>
+                        </tr>
+                    </tfoot>
+                    @* Get data  *@
+                </table>
+
+                <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.css" rel="stylesheet" />
+                <link href="https://cdn.datatables.net/1.10.15/css/dataTables.semanticui.min.css" rel="stylesheet" />
+                @section scripts{
+                    <script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+                    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.semanticui.min.js"></script>
+                    <script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.6/semantic.min.js"></script>
+
+                    <script>
+                        $(document).ready(function () {
+                            $("#employeetable").DataTable({
+                                "ajax": {
+                                    "url": "/LoginAjax/GetListEmployee",
+                                    "type": "POST",
+                                    "datatype": "json"
+                                },
+                                "columns": [
+                                    { "data": "Name", "name": "Name" },
+                                    { "data": "Position", "name": "Position" },
+                                    { "data": "Office", "name": "Office" },
+                                    { "data": "Age", "data": "Age" },
+                                    {
+                                        "data": "Salary",
+                                        "render": function (Salary) {
+                                            return Salary + " VNĐ";
+                                        }
+                                    },
+                                    { "data": "IDCountry", "data": "IDCountry" },
+                                    { "data": "IDDeparment", "data": "IDDeparment" },
+                                ],
+                                "serverSide": "true",
+                                "order": [0, "asc"],
+                                "processing": "true",
+                                "language": {
+                                    "processing": "processing... please wait"
+                                }
+                            });
+
+                        });
+                    </script>
+                }
+            </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+
+</div>
+

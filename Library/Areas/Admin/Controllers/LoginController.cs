@@ -31,8 +31,8 @@ namespace Library.Areas.Admin.Controllers
                             UserName = user.UserName,
                             GroupID = user.IDUserGroup
                         };
-                        var listCredentials = dao.GetListCredential(model.Username);
-                        Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
+                       // var listCredentials = dao.GetListCredential(model.Username);
+                        //Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
                         Session.Add(CommonConstants.USER_SESSION, userSession);
                         // Session.Add(""+userSession.UserName);
                         return RedirectToAction("Index", "Home");

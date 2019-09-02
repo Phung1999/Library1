@@ -17,3 +17,17 @@ D:\learn\Tulam\Library\LibraryDatabase\bin\Debug\LibraryCommanCore.pdb
 D:\learn\Tulam\Library\LibraryDatabase\bin\Debug\LibraryCore.pdb
 D:\learn\Tulam\Library\LibraryDatabase\bin\Debug\EntityFramework.xml
 D:\learn\Tulam\Library\LibraryDatabase\bin\Debug\EntityFramework.SqlServer.xml
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryDatabase.dll.config
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryDatabase.dll
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryDatabase.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\EntityFramework.dll
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\EntityFramework.SqlServer.dll
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryCommanCore.dll
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryCore.dll
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryCommanCore.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\LibraryCore.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\EntityFramework.xml
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\bin\Debug\EntityFramework.SqlServer.xml
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\obj\Debug\LibraryDatabase.csprojResolveAssemblyReference.cache
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\obj\Debug\LibraryDatabase.dll
+E:\baitapmvc5.0\Library\Library1\LibraryDatabase\obj\Debug\LibraryDatabase.pdb

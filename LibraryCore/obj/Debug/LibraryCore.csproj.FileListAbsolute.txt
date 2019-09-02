@@ -2,3 +2,8 @@ D:\learn\Tulam\Library\LibraryCore\bin\Debug\LibraryCore.dll
 D:\learn\Tulam\Library\LibraryCore\bin\Debug\LibraryCore.pdb
 D:\learn\Tulam\Library\LibraryCore\obj\Debug\LibraryCore.dll
 D:\learn\Tulam\Library\LibraryCore\obj\Debug\LibraryCore.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryCore\bin\Debug\LibraryCore.dll
+E:\baitapmvc5.0\Library\Library1\LibraryCore\bin\Debug\LibraryCore.pdb
+E:\baitapmvc5.0\Library\Library1\LibraryCore\obj\Debug\LibraryCore.csprojResolveAssemblyReference.cache
+E:\baitapmvc5.0\Library\Library1\LibraryCore\obj\Debug\LibraryCore.dll
+E:\baitapmvc5.0\Library\Library1\LibraryCore\obj\Debug\LibraryCore.pdb

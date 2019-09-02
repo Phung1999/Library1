@@ -16,7 +16,10 @@ namespace LibraryCommanCore
         //        return str;
         //    }
         //}
-        public static string UpCase(this string chuoi) => chuoi.UpCase();
+        //public static string Up(this string chuoi)
+        //{
+        //    chuoi.();
+        //}
 
         public static string LowCase(this string chuoi)
         {
