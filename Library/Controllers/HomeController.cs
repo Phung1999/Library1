@@ -32,8 +32,8 @@ namespace Library.Controllers
             //}
 
             //HttpRuntime.AppDomainAppPath;
-            string folderparent= CreateFolder.FolderParent("Files");
-            string folderchildren = CreateFolder.FolderChildren(folderparent + "/" + "Logger");
+           // string folderparent= CreateFolder.FolderParent("Files");
+            //string folderchildren = CreateFolder.FolderChildren(folderparent + "/" + "Logger");
             string datenow = DateTime.Now.ToString("yyyy-MM-dd");
            // string pathfile =Server.MapPath("~/Tuyen/Logger/"+datenow+".txt") ;
             string pathfile = "~/Files/Logger/" + datenow + ".txt";

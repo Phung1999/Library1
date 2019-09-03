@@ -175,6 +175,7 @@
     <Compile Include="Areas\Admin\Models\EmployeesModel.cs" />
     <Compile Include="Areas\Admin\Models\MenuModel.cs" />
     <Compile Include="Areas\Admin\Models\PermissionModel.cs" />
+    <Compile Include="Areas\Admin\Models\ProductViewModel.cs" />
     <Compile Include="Areas\Admin\Models\User.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
@@ -1961,6 +1962,8 @@
     <Content Include="Areas\Admin\Views\LoginAjax\Menu.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAjax\MenuViewBag.cshtml" />
     <Content Include="Areas\Admin\Views\LoginAjax\Deparment.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAjax\UpFiles.cshtml" />
+    <Content Include="Areas\Admin\Views\LoginAjax\Folders.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

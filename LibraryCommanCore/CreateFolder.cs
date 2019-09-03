@@ -12,21 +12,21 @@ namespace LibraryCommanCore
 {
     public static class CreateFolder
     {
-        public static string FolderParent(string folder)
+        public static void FolderParent(this object folder)
         {
-            string folderPath = HttpContext.Current.Server.MapPath("~/" + folder);
+            string folderPath = HttpContext.Current.Server.MapPath( ""+ folder);
             try
             {
                 //HttpRuntime.AppDomainAppPath
                 //Check whether Directory (Folder) exists.
                 if (!Directory.Exists(folderPath))
                     Directory.CreateDirectory(folderPath);
-                return folder;
+               
             }
             catch (Exception e)
             {
 
-                return "" + e;
+                e.Savefile();
             }
         }
         public static string FolderChildren(string folder)

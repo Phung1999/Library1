@@ -27,8 +27,8 @@ namespace LibraryDatabase.Database
     
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Credential> Credentials { get; set; }
-        //public virtual DbSet<QuyenUser> QuyenUsers { get; set; }
-        public virtual DbSet<GroupUser> UserGroups { get; set; }
+        public virtual DbSet<QuyenUser> QuyenUsers { get; set; }
+        public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<MainMenu> MainMenus { get; set; }

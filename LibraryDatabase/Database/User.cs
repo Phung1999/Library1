@@ -23,6 +23,5 @@ namespace LibraryDatabase.Database
         public Nullable<bool> IsBlocked { get; set; }
         public string IDUserGroup { get; set; }
         public string IDMainMenu { get; set; }
-        public Nullable<int> IDStaff { get; set; }
     }
 }

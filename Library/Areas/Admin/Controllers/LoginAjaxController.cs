@@ -8,15 +8,16 @@ using LibraryDatabase.Database;
 using System.Linq.Dynamic;
 using Library.Areas.Admin.Models;
 using LibraryCommanCore;
+using System.IO;
 
 namespace Library.Areas.Admin.Controllers
 {
     public class LoginAjaxController : Controller
     {
         //at company
-        // private LibraryDBEntities db = new LibraryDBEntities();
+        private LibraryDBEntities db = new LibraryDBEntities();
         //at home 
-        private LibraryDBEntities1 db = new LibraryDBEntities1();
+        //private LibraryDBEntities1 db = new LibraryDBEntities1();
         // GET: Admin/LoginAjax
         public ActionResult Index()
         {
@@ -218,7 +219,7 @@ namespace Library.Areas.Admin.Controllers
             }
             catch (Exception e)
             {
-                Logger.Savefile("" + e);
+                e.Savefile();
 
             }
             return RedirectToAction("Index", "LoginAjax");
@@ -260,7 +261,7 @@ namespace Library.Areas.Admin.Controllers
             }
             catch (Exception e)
             {
-                Logger.Savefile(e.ToString());
+                e.Savefile();
             }
             return Json("0", JsonRequestBehavior.AllowGet);
         }
@@ -285,7 +286,7 @@ namespace Library.Areas.Admin.Controllers
             }
             catch (Exception e)
             {
-                Logger.Savefile(e.ToString());
+                e.Savefile();
             }
             return Json("0", JsonRequestBehavior.AllowGet);
         }
@@ -293,13 +294,91 @@ namespace Library.Areas.Admin.Controllers
 
         public ActionResult Deparment()
         {
-            List<PermissionModel> list = new List<PermissionModel>();
-            list.Add(new PermissionModel() { Name = "Thêm" });
-            list.Add(new PermissionModel() { Name = "Sửa" });
-            list.Add(new PermissionModel() { Name = "Xóa" });
-            ViewBag.Permission = list.ToList();
+            try
+            {
+                List<PermissionModel> list = new List<PermissionModel>();
+                list.Add(new PermissionModel() { Name = "Thêm" });
+                list.Add(new PermissionModel() { Name = "Sửa" });
+                list.Add(new PermissionModel() { Name = "Xóa" });
+                ViewBag.Permission = list.ToList();
+                return View();
+            }
+            catch (Exception e)
+            {
+                e.Savefile();
+            }
             return View();
         }
 
+        public ActionResult UpFiles()
+        {
+            return View();
+        }
+      
+        public ActionResult UploadFiles()
+        {
+            string FileName = "";
+            try
+            {
+                HttpFileCollectionBase files = Request.Files;
+                for (int i = 0; i < files.Count; i++)
+                {
+                    //string path = AppDomain.CurrentDomain.BaseDirectory + "Uploads/";    
+                    //string filename = Path.GetFileName(Request.Files[i].FileName);    
+
+                    HttpPostedFileBase file = files[i];
+                    string fname;
+
+                    // Checking for Internet Explorer    
+                    if (Request.Browser.Browser.ToUpper() == "IE" || Request.Browser.Browser.ToUpper() == "INTERNETEXPLORER")
+                    {
+                        string[] testfiles = file.FileName.Split(new char[] { '\\' });
+                        fname = testfiles[testfiles.Length - 1];
+                    }
+                    else
+                    {
+                        fname = file.FileName;
+                        FileName = file.FileName;
+                    }
+
+                    // Get the complete folder path and store the file inside it. 
+                    if (!Directory.Exists("~/Uploads"))
+                        CreateFolder.FolderParent("~/Uploads");
+                    fname = Path.Combine(Server.MapPath("~/Uploads/"), fname);
+                    file.SaveAs(fname);
+                    return Json(FileName, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception e)
+            {
+                e.Savefile();
+            }
+
+            return Json(FileName, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ImageUpload(ProductViewModel model)
+        {
+
+            var file = model.ImageFile;
+
+            if (file != null)
+            {
+
+                var fileName = Path.GetFileName(file.FileName);
+                var extention = Path.GetExtension(file.FileName);
+                var filenamewithoutextension = Path.GetFileNameWithoutExtension(file.FileName);
+
+                file.SaveAs(Server.MapPath("/UploadedImage/" + file.FileName));
+
+
+            }
+
+            return Json(file.FileName, JsonRequestBehavior.AllowGet);
+
+        }
+        public ActionResult Folders()
+        {
+            return View();
+        }
     }
 }

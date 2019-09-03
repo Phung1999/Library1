@@ -16,11 +16,10 @@ namespace LibraryDatabase.Database
     {
         public int DeparmentID { get; set; }
         public string Name { get; set; }
-        public Nullable<int> IdParent { get; set; }
         public string Address { get; set; }
         public string Phone { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> LastEdit { get; set; }
-        public Nullable<int> IDGroupUser { get; set; }
+        public Nullable<int> IDGroup { get; set; }
     }
 }

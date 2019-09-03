@@ -17,3 +17,4 @@ E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\obj\Debug\LibraryCommanCore.p
 E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\bin\Debug\LibraryCommanCore.dll
 E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\bin\Debug\LibraryCommanCore.pdb
 E:\baitapmvc5.0\Library\Library1\LibraryCommanCore\bin\Debug\System.Linq.Dynamic.dll
+D:\learn\Tulam\Library\LibraryCommanCore\obj\Debug\LibraryCommanCore.csprojResolveAssemblyReference.cache

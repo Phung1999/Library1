@@ -14,7 +14,7 @@ namespace LibraryDatabase.Database
     
     public partial class Menu
     {
-        public int MenuID { get; set; }
+        public int ID { get; set; }
         public string Name { get; set; }
         public string MenuURL { get; set; }
     }

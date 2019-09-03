@@ -50,16 +50,16 @@
   <ItemGroup>
     <Compile Include="Dao\UserDao.cs" />
     <Compile Include="Database\Country.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Credential.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Deparment.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Employee.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Group.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -68,10 +68,10 @@
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\MainMenu.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Menu.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\Model1.Context.cs">
       <AutoGen>True</AutoGen>
@@ -106,20 +106,26 @@
     <Compile Include="Database\PermissionsUser.cs">
       <DependentUpon>Model2.tt</DependentUpon>
     </Compile>
+    <Compile Include="Database\QuyenUser.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Database\Staff.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\SubMenu.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\sysdiagram.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\User.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserGroup.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Database\UserRole.cs">
-      <DependentUpon>Model2.tt</DependentUpon>
+      <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

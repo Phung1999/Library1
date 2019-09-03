@@ -12,13 +12,9 @@ namespace LibraryDatabase.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class UserRole
+    public partial class UserGroup
     {
+        public string UserGroupID { get; set; }
         public string Name { get; set; }
-        public Nullable<System.DateTime> CreateDate { get; set; }
-        public Nullable<System.DateTime> LastEdit { get; set; }
-        public Nullable<bool> IsDelete { get; set; }
-        public Nullable<bool> IsBlocked { get; set; }
-        public string UserRoleID { get; set; }
     }
 }
